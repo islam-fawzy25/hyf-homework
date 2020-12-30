@@ -132,7 +132,7 @@ top: 30px;}
  @media (max-width:900px){
     body{zoom: 90%;}
       
-      header{max-width:800px}
+      header{max-width:500px}
       
     header>div{padding-top: 50px;
                 height: 100px;
@@ -142,7 +142,7 @@ top: 30px;}
 
     .top { height: 120px; }
 
-    img {max-width:800px;
+    img {max-width:500px;
        height: 200px;}
 
     main { flex-direction: column-reverse;
