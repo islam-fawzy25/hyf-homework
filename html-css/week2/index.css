@@ -183,7 +183,7 @@ top: 30px;}
     display: flex;
 flex-direction: column;
 width: 100%;
-height: 800px;
+height: 100%;
 padding-left: 50px;}
 
 .find-us{padding-left: 10px;}
