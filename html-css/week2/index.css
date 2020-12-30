@@ -131,7 +131,9 @@ top: 30px;}
     
  @media (max-width:900px){
     body{zoom: 90%;}
-
+      
+      header{width:100%}
+      
     header>div{padding-top: 50px;
                 height: 100px;
             font-size: 50%;}
