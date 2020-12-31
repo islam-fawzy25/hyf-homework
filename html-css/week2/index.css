@@ -1,7 +1,4 @@
 
-    
-   
-
 
 body{font-family: Verdana, Geneva, Tahoma, sans-serif;}
 
@@ -61,7 +58,9 @@ main>article>h3{text-transform: uppercase;}
 main>article>p{color: rgb(126, 126, 126);}
 
 main>section{top: 30px;
-    padding-right: 200px;}
+    padding-right: 100px;
+padding-left: 50px;
+margin-right: 50px;}
 
 main>section :nth-child(1) {text-transform: uppercase;}
 main>section p{color: rgb(126, 126, 126) ;}
@@ -83,7 +82,8 @@ margin-left: 100px;}
 .logo>div>p{ color: rgb(126, 126, 126) ;}
 
 .logotypes{ width: 700px;
-text-transform: uppercase;}
+text-transform: uppercase;
+padding-left: 60px;}
 
 .logotypes a{padding: 20px;}
 
@@ -189,3 +189,4 @@ text-transform: uppercase;}
  
      .navigation{ display: none;}
        }
+    
