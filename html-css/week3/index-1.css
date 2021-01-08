@@ -1,0 +1,153 @@
+*{margin: 0;
+padding: 0;
+font-family: Arial, Helvetica, sans-serif;
+box-sizing: border-box;
+}
+
+/* basic to 3 of them */
+header{display: flex;
+    justify-content: space-between;
+    }
+
+.logo{width: 100px;
+height: 50px;
+margin:  10px;
+background-color: cornflowerblue;
+border: 1px solid blue;
+}
+
+.navigation{width: 300px;
+    height: 50px;
+    margin: 10px;
+    background-color: cornflowerblue;
+    border: 1px solid blue;
+    }
+
+    input,select{height: 30px;
+        width: 250px;
+        cursor: pointer;
+         }
+        
+        label{font-weight: bold;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .progress{display: flex;
+            flex-direction: column;
+              }
+    
+            .progress>progress{width: 700px;
+            height: 50px;}
+            .progress>input{width: 700px;
+                height: 50px;}
+
+            main{display: flex;
+                flex-direction: column;
+                justify-content:space-evenly;         
+                 margin-left:20px;
+                   }
+
+                   form>div{margin:50px;}
+
+                   /* page one */
+    .sign-up{
+        margin: 20px;
+        padding-bottom: 50px;
+        font-size: 20px;
+        }
+
+.profile-discription{display: flex;
+width: 100%;
+}
+
+.profile-discription>div{ width: 200px;}
+
+.profile-discription-box>textarea{width: 700px;
+height: 150px;}
+
+.shipping-address{display: flex;
+margin-top: 30px;
+}
+
+.shipping-address>label{margin-left: 10px;
+margin-right: -60px;}
+
+.newsletter{margin-bottom: 250px;
+margin-left: 100px;
+    display: flex;
+flex-shrink: 1;}
+
+/* page 2 */ 
+
+.info{margin-left: 155px;
+display: flex;
+flex-shrink:1;}
+
+.password{margin-left: 120px;}
+
+.newsletter{display: flex;
+    flex-wrap: wrap;}
+
+.newsletter span input{margin-left: -100px;}
+
+/* page 3*/
+
+.item-container{margin-bottom: 150px;
+}
+
+.item{display: flex;
+    justify-content: center;
+    text-align: right;
+    margin: 50px;
+}
+
+
+.style{}
+
+.style ul{display: flex;
+    flex-wrap: wrap;
+    width: 1400px;
+}
+
+.style ul li{
+    list-style: none;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+
+.style ul img {width: 250px;
+max-height:350px;
+cursor: pointer;
+}
+
+.style ul li div label{cursor: pointer;
+font-size: 20px;
+font-weight:900;
+}
+
+
+@media screen and (max-width:1024px){.style ul{flex-direction: column;}}
+
+
+button{width: 300px;
+height: 100px;
+font-weight: bold;
+float: right;
+margin-right: 50px;
+margin-bottom: 50px;
+opacity: 0.9;}
+
+button:hover{opacity: 1;}
+
+.submit{width: 300px;
+    height: 100px;
+    font-weight: bold;
+    float: right;
+    margin-right: 50px;
+    margin-bottom: 50px;
+
+}
