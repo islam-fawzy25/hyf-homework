@@ -1,4 +1,11 @@
 hi 
 it is my homework file
+<<<<<<< HEAD
 it is my commit g
 updated1
+=======
+it is my commit 
+updated to branch2
+ggg
+>>>>>>> 04993b40e4333dac9abde5ec605d836d121a2a55
+after merged and pull request
