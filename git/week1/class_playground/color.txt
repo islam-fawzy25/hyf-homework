@@ -1,2 +1,2 @@
 red   first line -first edit
-blue
+blue   edit her
