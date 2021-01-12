@@ -1,0 +1,2 @@
+red   first line -first edit
+blue
