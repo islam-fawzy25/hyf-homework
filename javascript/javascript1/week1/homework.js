@@ -23,3 +23,40 @@ if(shouldShowResultInDogYears){dogYear = (dogYearFuture - dogYearOfBirth)* 7;}
 else{dogYear = dogYearFuture - dogYearOfBirth;}
 console.log(dogYear);
 
+//Housey pricey (A house price estimator)
+
+//housePrice = volumeInMeters * 2.5 * 1000 + gardenSizeInM2 * 300;
+// Advise to peter
+
+let wide = 8;
+let deep = 10 ;
+let high = 10;
+let volumeInMeters  =wide * deep * high;
+let gardenSizeInM2 = 100
+let houseCost = 20500000
+let housePrice = volumeInMeters * 2.5 * 1000 + gardenSizeInM2 * 300 ;
+
+const salesAdviseText1 = 'paying too much'
+const salesAdviseText2 = 'paying too little'
+let salesAdvise ;
+let clientName = 'peter'
+
+ if (houseCost>housePrice ) { salesAdvise = clientName + salesAdviseText1  
+ }else{salesAdvise = clientName + salesAdviseText2 }
+
+ console.log(salesAdvise)
+
+// Advise to julia 
+ wide = 5;
+ deep = 11 ;
+ high = 8;
+  volumeInMeters  =wide * deep * high;
+ gardenSizeInM2 = 70;
+ houseCost = 1000000 ;
+housePrice = volumeInMeters * 2.5 * 1000 + gardenSizeInM2 * 300 ;
+clientName ='julia'
+if (houseCost>housePrice ) { salesAdvise = clientName + salesAdviseText1
+    
+}else{salesAdvise = clientName + salesAdviseText2 }
+
+console.log(salesAdvise)
