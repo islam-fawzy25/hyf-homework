@@ -39,9 +39,9 @@ let housePrice = volumeInMeters * 2.5 * 1000 + gardenSizeInM2 * 300 ;
 const salesAdviseText1 = 'paying too much'
 const salesAdviseText2 = 'paying too little'
 let salesAdvise ;
-let clientName = 'peter'
+let clientName = 'peter '
 
- if (houseCost>housePrice ) { salesAdvise = clientName + salesAdviseText1  
+ if (houseCost>housePrice ) { salesAdvise = clientName +salesAdviseText1  
  }else{salesAdvise = clientName + salesAdviseText2 }
 
  console.log(salesAdvise)
@@ -54,9 +54,22 @@ let clientName = 'peter'
  gardenSizeInM2 = 70;
  houseCost = 1000000 ;
 housePrice = volumeInMeters * 2.5 * 1000 + gardenSizeInM2 * 300 ;
-clientName ='julia'
+clientName ='julia '
 if (houseCost>housePrice ) { salesAdvise = clientName + salesAdviseText1
     
 }else{salesAdvise = clientName + salesAdviseText2 }
 
 console.log(salesAdvise)
+
+
+// 4. Ez Namey (Startup name generator)
+
+const firstWords =["Easy ","Awesome ","Amazing ","Majestic ","Wonderful ","Surprising ",
+"Incredible ","Hit ","Success ","victory " ];
+const secondWords =["Corporation","Company","Partners","Agency", "Business",
+"Agent","Team","Train","Crew","Squad"];
+const randomNumber = Math.floor(Math.random() * 10) + 0;
+
+let startupName =firstWords[randomNumber] + secondWords[randomNumber];
+
+console.log("The startup:" + startupName +" "+ startupName.length +" characters")
