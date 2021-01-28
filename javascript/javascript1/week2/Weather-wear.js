@@ -1,5 +1,6 @@
 // Weather Wear 
 
+
 function weatherwear(temperature){
     if(temperature >= 23 ){
         return "You should to wear short and Tshirt"
