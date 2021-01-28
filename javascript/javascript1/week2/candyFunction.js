@@ -39,27 +39,28 @@ function canBuyMoreCandy (){
 //totalPrice += items
 
 
-    for ( let i = 0 ; i < boughtCandyPrices.length ; ){
-        totalPrice = boughtCandyPrices[i] 
-        i++
-    }
-    return console.log(totalPrice)
+    for ( let i = 0 ; i < boughtCandyPrices.length ;i++ ){
+        totalPrice += boughtCandyPrices[i] 
+        
+    }   // i know (for ) not working  also  with foreach so 
+    // i will tried again with while and push again or if you can tell me please why its not working
+   // return console.log(totalPrice)
 
-    /* 
+    
     if(amountToSpend >totalPrice)
         {
         true;
-       // console.log('You can buy more, so please do!')
+        console.log('You can buy more, so please do!')
 
        return 
     }else{
-        //console.log('Enough candy for you!')
+        console.log('Enough candy for you!')
 
         false ;
 
         return 
     } 
-    */
+    
     
 }
 
@@ -76,5 +77,5 @@ addCandy('Chewing-gum',500);
 console.log(boughtCandyPrices);
 canBuyMoreCandy();
 
-console.log(totalPrice)
+//console.log(totalPrice)
 //console.log(boughtCandyPrices[i])
