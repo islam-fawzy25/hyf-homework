@@ -1,13 +1,16 @@
-// how can i add condition for (not allow EX: number 'student == number ' not working)
+//Studen Manager
+
 
 const class07Students = [];
 function addStudentToClass(studentName) {
   // You write code here
-  
-  if( studentName ==' '|| studentName == null ){
+  // studentName ==' '|| studentName == null
+  if( typeof (studentName) !== "string" ){
     return console.log('Invalid name .. please enter valid name')
+
   }else if(class07Students.length >=6 && studentName !=='Queen'){
     return console.log("Cannot add more students to class 07.")
+
 }else {
   for (let i = 0; i < class07Students.length; i++) {
     if (studentName === class07Students[i]){
@@ -18,6 +21,7 @@ function addStudentToClass(studentName) {
 
  console.log('Student '+studentName +' is added to the class')
 }
+
 }
 function getNumberOfStudents() {
   // You write code here
@@ -30,6 +34,8 @@ addStudentToClass('Taliah ');
 addStudentToClass('Selim');
 addStudentToClass('Jack ');
 addStudentToClass('Sally ');
+addStudentToClass(5);
+
 addStudentToClass('Jack ');
 addStudentToClass('Sarah ');
 addStudentToClass('Taliah ');
@@ -45,4 +51,7 @@ console.log(class07Students)
 
 
 getNumberOfStudents()
+
+
+
 
