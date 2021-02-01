@@ -10,14 +10,13 @@
 const weekdays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday',  'Sunday']  
 
 var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
+var dd = Number today.getDate()).padStart(2, '0');
 
 function getEventWeekday(newDate){
    return weekdays [(dd+ newDate)%7] ;
 }
 
 console.log(getEventWeekday(1));
-console.log(getEventWeekday(8));
-
+console.log(getEventWeekday(18));
 
 
