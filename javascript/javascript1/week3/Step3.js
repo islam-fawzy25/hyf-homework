@@ -7,7 +7,7 @@ const notes = [];
 function saveNote(content, id) {
   // write some code here
   notes.push({content, id })
-}:
+};
 
 saveNote("Pick up groceries", 1);
 saveNote("Do laundry", 2);
@@ -27,7 +27,7 @@ for(let i=0; i< notes.length; i++){
   return  'Error'
 }
 }
-}:
+};
 const firstNote = getNote(1);
  console.log(firstNote); // {content: 'Pick up groceries', id: 1}
  
@@ -41,7 +41,7 @@ const firstNote = getNote(1);
    for(var item in notes){
 console.log('The note with id: '+notes[item].id+' has the following note text: '+notes[item].content)
    }
- }:
+ };
  
  logOutNotesFormatted(); // should log out the text below
  
