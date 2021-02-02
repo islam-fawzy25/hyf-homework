@@ -90,17 +90,18 @@ const travelInformation = {
      // console.log(seriesDurations[i].title)
       if(seriesDurations[i].title==seriesName){
 
-      let hoursCalculation =(seriesDurations[i].hours +(seriesDurations[i].minutes /60))
+      let hoursCalculation =(seriesDurations[i].hours +(seriesDurations[i].minutes /60)) ;
       let  daysCalculation = seriesDurations[i].days  + (hoursCalculation/24 ) ;
       
-      let seriesTimeOfLife=((daysCalculation/365 ) /80)*100
-      let percentageSeriesTimeOfLife = seriesTimeOfLife.toFixed(3)+' %'
+      let seriesTimeOfLife=((daysCalculation/365 ) /80)*100 ;
+      let percentageSeriesTimeOfLife = seriesTimeOfLife.toFixed(3)+' %' ;
 
-          console.log(seriesName +' took '+ percentageSeriesTimeOfLife +' of my life ')
+       console.log(seriesName +' took '+ percentageSeriesTimeOfLife +' of my life ');
+
       }
       
        }   
-  }
+  };
   logOutSeriesText('Game of thrones');
   logOutSeriesText('Sopranos');
   logOutSeriesText('The Wire'); // logs out the text found above
