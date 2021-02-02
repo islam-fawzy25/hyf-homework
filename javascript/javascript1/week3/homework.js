@@ -35,27 +35,75 @@ const travelInformation = {
     destinationDistance: 432,
   };
 
-  let travelResult = travelInformation.destinationDistance / travelInformation.speed ;
-  let travelHistory = travelResult +'';
-  let travel = new Array();
-  travel = travelHistory.split('.');
+
 //console.log(travelResult);
 // console.log(travel);
 
-  function x(){
-   
-if(travel.length=2){
-let  z = travel[1] *60/100
-  return travelTime= travel[0]+ ' hours '+ z +' minutes'
-}else{
-   return travelTime = travel[0]+ ' hours '
-}
+  function timeOfTravel(){
+    let travelResult = travelInformation.destinationDistance / travelInformation.speed ;
+    let travelHistory = travelResult +'';
+    let travel = new Array();
+    travel = travelHistory.split('.');
+
+    let  minutesCalculation = travel[1] *60/100;
+     travelTime= travel[0]+ ' hours '+ minutesCalculation +' minutes'
 
   };
 
-  x(travelInformation);
+  timeOfTravel(travelInformation);
 
  // const travelTime = x(travelInformation);
   console.log(travelTime); // 4 hours and 42 minutes
 
+  // Series duration of my life
 
+
+  const seriesDurations = [
+    {
+      title: "Game of thrones",
+      days: 3,
+      hours: 1,
+      minutes: 0,
+    },
+    {
+      title: "Sopranos",
+      days: 3,
+      hours: 14,
+      minutes: 0,
+    },
+    {
+      title: "The Wire",
+      days: 2,
+      hours: 12,
+      minutes: 0,
+    },
+  ];
+
+  let seriesName = '';
+ 
+// average lifespan of 80 years.
+
+  function logOutSeriesText(seriesName) {
+    // write code here
+
+    for(i=0;i<seriesDurations.length;i++){
+     // console.log(seriesDurations[i].title)
+      if(seriesDurations[i].title==seriesName){
+
+      let hoursCalculation =(seriesDurations[i].hours +(seriesDurations[i].minutes /60))
+      let  daysCalculation = seriesDurations[i].days  + (hoursCalculation/24 ) ;
+      
+      let seriesTimeOfLife=((daysCalculation/365 ) /80)*100
+      let percentageSeriesTimeOfLife = seriesTimeOfLife.toFixed(3)+' %'
+
+          console.log(seriesName +' took '+ percentageSeriesTimeOfLife +' of my life ')
+      }
+      
+       }   
+  }
+  logOutSeriesText('Game of thrones');
+  logOutSeriesText('Sopranos');
+  logOutSeriesText('The Wire'); // logs out the text found above
+
+
+  
