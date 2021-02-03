@@ -19,27 +19,21 @@ console.log(notes); // [{content: 'Pick up groceries', id: 1}, {content: 'Do lau
 function getNote(id){
   // your code here
  for(let i=0; i< notes.length; i++){ 
- //console.log(notes[i])
-
    if ( notes[i].id == id ){
     return   notes[i]
    }
-
   }
   return 'Error'
 };
-const firstNote = getNote(5);
+const firstNote = getNote(1);
  console.log(firstNote); // {content: 'Pick up groceries', id: 1}
- 
- // i don´t know why for loop working only once ?!!!!!!!
- // so if i try to getNote(2) it will give me Error!!!!!
 
  // Log out notes
 
  function logOutNotesFormatted() {
    // your code here
    for(var item in notes){
-console.log('The note with id: '+notes[item].id+' has the following note text: '+notes[item].content)
+   console.log('The note with id: '+notes[item].id+' has the following note text: '+notes[item].content)
    }
  };
  

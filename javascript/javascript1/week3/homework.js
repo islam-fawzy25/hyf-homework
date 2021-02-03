@@ -15,18 +15,13 @@ const names = [
   const nameToRemove = "Ahmad";
   // Write some code here
 for (let i = 0; i < names.length; i++) {
-    if(nameToRemove === names[i]){
-        
+    if(nameToRemove === names[i]){ 
         names.splice(names.indexOf (nameToRemove),1)
         break
     }
 }
 
-
-// Code done
-  
-  console.log(names); // ['Peter', 'Yana', 'kristina', 'Rasmus', 'Samuel', 'katrine', 'Tala']
-
+console.log(names); // ['Peter', 'Yana', 'kristina', 'Rasmus', 'Samuel', 'katrine', 'Tala']
 
 //When will we be there??
 
@@ -35,19 +30,13 @@ const travelInformation = {
     destinationDistance: 432,
   };
 
-
-//console.log(travelResult);
-// console.log(travel);
-
   function timeOfTravel(){
     let travelResult = travelInformation.destinationDistance / travelInformation.speed ;
     let travelHistory = travelResult +'';
     let travel = new Array();
     travel = travelHistory.split('.');
-
     let  minutesCalculation = travel[1] *60/100;
      travelTime= travel[0]+ ' hours '+ minutesCalculation +' minutes'
-
   };
 
   timeOfTravel(travelInformation);
@@ -95,35 +84,13 @@ let sum =0 ;
       let  daysCalculation = seriesDurations[i].days  + (hoursCalculation/24 ) ;
       let seriesTimeOfLife=((daysCalculation/365 ) /80)*100 ;
       sum += seriesTimeOfLife
-
-      let percentageSeriesTimeOfLife = seriesTimeOfLife.toFixed(3) ;
+// add sum befor .toFixed because it´s convert number to string and used brevious variable
+       let percentageSeriesTimeOfLife = seriesTimeOfLife.toFixed(3) ;
 
        //totalTime += percentageSeriesTimeOfLife ;
        console.log(seriesName +' took '+ percentageSeriesTimeOfLife +' % '+ 'of my life ');
       }  
-
-      /*
-     // let inTotalTimeArr = [];
-     totalTimeArr.push(totalTime)
-     console.log(totalTimeArr)
-     
-     let inTotalTimeArr = totalTimeArr.split('.');
-     console.log(inTotalTimeArr)
-*/
-console.log('In total that is '+ sum +' of my life ')
-
+   console.log('In total that is '+ sum +' % of my life ')
   };
 
-  logOutSeriesText()
-  /*
-  logOutSeriesText('Game of thrones');
-  logOutSeriesText('Sopranos');
-  logOutSeriesText('The Wire'); // logs out the text found above
-
-
-/* 
-1. i want know how to make all the orders inside the function and just call it like :
-"  logOutSeriesText(); " = found all the result ++
-2- i need to calculat Total of "" percentageSeriesTimeOfLife "" i tired to make empty 
-array and push all result on it and calculat it but iit did not success 
-*/
+       logOutSeriesText()
