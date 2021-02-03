@@ -107,4 +107,3 @@ const travelInformation = {
   logOutSeriesText('The Wire'); // logs out the text found above
 
 
-  
