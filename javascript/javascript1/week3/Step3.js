@@ -19,7 +19,7 @@ console.log(notes); // [{content: 'Pick up groceries', id: 1}, {content: 'Do lau
 function getNote(id){
   // your code here
  for(let i=0; i< notes.length; i++){ 
-   if ( notes[i].id == id ){
+   if ( notes[i].id === id ){
     return   notes[i]
    }
   }

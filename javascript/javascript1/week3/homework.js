@@ -14,12 +14,8 @@ const names = [
   ];
   const nameToRemove = "Ahmad";
   // Write some code here
-for (let i = 0; i < names.length; i++) {
-    if(nameToRemove === names[i]){ 
-        names.splice(names.indexOf (nameToRemove),1)
-        break
-    }
-}
+
+   names.splice(names.indexOf (nameToRemove),1)
 
 console.log(names); // ['Peter', 'Yana', 'kristina', 'Rasmus', 'Samuel', 'katrine', 'Tala']
 
@@ -31,13 +27,12 @@ const travelInformation = {
   };
 
   function timeOfTravel(){
-    let travelResult = travelInformation.destinationDistance / travelInformation.speed ;
-    let travelHistory = travelResult +'';
-    let travel = new Array();
-    travel = travelHistory.split('.');
-    let  minutesCalculation = travel[1] *60/100;
+    const travelResult = travelInformation.destinationDistance / travelInformation.speed ;
+    const travelHistory = travelResult +'';
+    const travel = travelHistory.split('.');
+    const  minutesCalculation = travel[1] *60/100;
      travelTime= travel[0]+ ' hours '+ minutesCalculation +' minutes'
-  };
+    };
 
   timeOfTravel(travelInformation);
 
@@ -68,24 +63,20 @@ const travelInformation = {
     },
   ];
 
-  let seriesName = '';
- let totalTime = 0;
- let totalTimeArr =[];
-
 // average lifespan of 80 years.
 
-  function logOutSeriesText(seriesName) {
+  function logOutSeriesText() {
     // write code here
 let sum =0 ;
     for(i=0;i<seriesDurations.length;i++){
      
       seriesName = seriesDurations[i].title
-      let hoursCalculation =(seriesDurations[i].hours +(seriesDurations[i].minutes /60)) ;
-      let  daysCalculation = seriesDurations[i].days  + (hoursCalculation/24 ) ;
-      let seriesTimeOfLife=((daysCalculation/365 ) /80)*100 ;
+      const hoursCalculation =(seriesDurations[i].hours +(seriesDurations[i].minutes /60)) ;
+      const   daysCalculation = seriesDurations[i].days  + (hoursCalculation/24 ) ;
+      const  seriesTimeOfLife=((daysCalculation/365 ) /80)*100 ;
       sum += seriesTimeOfLife
 // add sum befor .toFixed because it´s convert number to string and used brevious variable
-       let percentageSeriesTimeOfLife = seriesTimeOfLife.toFixed(3) ;
+       const  percentageSeriesTimeOfLife = seriesTimeOfLife.toFixed(3) ;
 
        //totalTime += percentageSeriesTimeOfLife ;
        console.log(seriesName +' took '+ percentageSeriesTimeOfLife +' % '+ 'of my life ');
