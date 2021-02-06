@@ -11,6 +11,8 @@ function saveNote(content, id) {
 
 saveNote("Pick up groceries", 1);
 saveNote("Do laundry", 2);
+saveNote("Wake up morning", 3);
+
 
 console.log(notes); // [{content: 'Pick up groceries', id: 1}, {content: 'Do laundry', id: 2}]
 
@@ -54,9 +56,9 @@ const firstNote = getNote(1);
         };
     }
 };
-let Note = getWord('up');
-console.log(Note); 
 
+ let Note = getWord('up');
+ console.log(Note); 
 
 function getWord(word) {
     let isIncluded = false;
@@ -78,32 +80,3 @@ getWord("up");
 
 
 
-// down here third project to solve the idea 
-
- //var str = [{content:"This is an interesting sentence.",id:20},{}];
- //var response = notes[i].content.split(" ");
-
- //console.log(response)
- /* Expected result:
-   This,is,an,interesting,sentence.
-   (Note: returns array)
-   */
-/*
-  function getNote(content){
-    // your code here
-
-   for(let i=0; i< notes.length; i++){ 
-    var response = notes[i].content.split(" ");
-console.log(response)
-     if ( notes[i].content == first){
-
-      return   notes[i]
-     }
-    }
-    return 'Error'
-  };
-  const first = getNote('lundry');
-
-   console.log(first); // {content: 'Pick up groceries', id: 1}
-   */
-  
