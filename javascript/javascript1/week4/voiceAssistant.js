@@ -68,7 +68,7 @@
       var today =     dayOfMonth + " of " + curMonth +' '+ curYear;
        return 'Today is: ' +today;
        };
-
+/*
     // implement simple math operation 
        if(splitCommand[3]=== '+'){
         // found this function on :https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt
@@ -97,7 +97,14 @@
        const b = filterInt(splitCommand[4]);      
        return      a*b ;
        };
-   
+   */
+if(splitCommand.includes('*')||splitCommand.includes('+')||splitCommand.includes('/')||splitCommand.includes('-')){
+   splitCommand.splice(0,2)
+  const calculationReady = splitCommand.join('')
+  return      eval(calculationReady)
+
+}
+
     };
     // Timer for 4 minutes 
     setTimeout(function(){ alert("Timer done"); }, 1000*60*4);
@@ -119,5 +126,6 @@
   console.log(getReply("What day is it today?")); 
   console.log(getReply("what is 3 + 3")); 
   console.log(getReply("what is 4 * 12")); 
-  //console.log(getReply("what is 4 - 12")); 
+  console.log(getReply("what is 50 - 12")); 
+  console.log(getReply("what is 500 / 10")); 
 
