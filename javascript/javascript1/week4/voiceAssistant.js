@@ -57,7 +57,8 @@
        // here implement date of today 
        if(command === 'What day is it today?'){
        // i copied from : stack overflow  website and i removed few lines related to hours
-        var objToday = new Date(),
+       /*
+       var objToday = new Date(),
 	
         domEnder = function() { var a = objToday; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th" }(),
         dayOfMonth = today + ( objToday.getDate() < 10) ? '0' + objToday.getDate() + domEnder : objToday.getDate() + domEnder,
@@ -66,6 +67,15 @@
         curYear = objToday.getFullYear(),
         curMeridiem = objToday.getHours() > 12 ? "PM" : "AM";
       var today =     dayOfMonth + " of " + curMonth +' '+ curYear;
+      */
+     // so i think this one better and my brain working good now :D
+     const n = new Date();
+     const dd = n.getDate();
+     const mm = n.getMonth ();
+     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+     const yy = n.getUTCFullYear() ;
+     const today = dd +' '+ months[mm]  +' '+ yy ;
        return 'Today is: ' +today;
        };
 /*
