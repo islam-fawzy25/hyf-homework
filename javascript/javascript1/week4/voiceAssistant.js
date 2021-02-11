@@ -13,7 +13,6 @@
         if ( splitCommand[4]== ''|| splitCommand[4] ==undefined){
           return ' Your name has not yet  been  mentioned ';
        };
-
         if (nameArr.includes(userName)){
          return ' you already on the system '+ userName ;
         };
@@ -22,7 +21,6 @@
       };
 
       if(command.startsWith('What') && command.endsWith('name?')){
-
         return ' Your name is '+ nameArr[0];
       };
 
@@ -38,12 +36,9 @@
       if(command.startsWith('Remove') && command.endsWith('todo')){
         splitCommand.splice(0,1);
         splitCommand.splice(splitCommand.length-3,3);
-
-        // here also it did not join the array
          const removeCommand = splitCommand.join(' ')
 
          if(myTodo.includes(removeCommand)){
-
            return myTodo.splice(myTodo.indexOf(removeCommand),1)
          }
         return myTodoIs
@@ -73,7 +68,6 @@
      const dd = n.getDate();
      const mm = n.getMonth ();
      const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
      const yy = n.getUTCFullYear() ;
      const today = dd +' '+ months[mm]  +' '+ yy ;
        return 'Today is: ' +today;
@@ -108,19 +102,15 @@
        return      a*b ;
        };
    */
-if(splitCommand.includes('*')||splitCommand.includes('+')||splitCommand.includes('/')||splitCommand.includes('-')){
-   splitCommand.splice(0,2)
-  const calculationReady = splitCommand.join('')
-  return      eval(calculationReady)
-
-}
-
-    };
+   if(splitCommand.includes('*')||splitCommand.includes('+')||splitCommand.includes('/')||splitCommand.includes('-')){
+    splitCommand.splice(0,2)
+    const calculationReady = splitCommand.join('')
+   return      eval(calculationReady)
+   } ;
+};
     // Timer for 4 minutes 
-    setTimeout(function(){ alert("Timer done"); }, 1000*60*4);
-
-
-
+        // i will try to devolep that part on friday 
+    setTimeout(function(){ console.log("Timer done"); }, 1000*60*4);
 
   console.log(getReply("Hello my name is islam")); 
   console.log(getReply("Hello my name is islam")); 
@@ -128,10 +118,8 @@ if(splitCommand.includes('*')||splitCommand.includes('+')||splitCommand.includes
   console.log(getReply("What is my name?")); 
   console.log(getReply("Add fishing to my todo")); 
   console.log(getReply("Add singing in the shower to my todo")); 
-
    //console.log(getReply("Remove singing in the shower from my todo")); 
-   console.log(getReply("Remove fishing from my todo")); 
- 
+  console.log(getReply("Remove fishing from my todo")); 
   console.log(getReply("What  is on my todo?")); 
   console.log(getReply("What day is it today?")); 
   console.log(getReply("what is 3 + 3")); 
