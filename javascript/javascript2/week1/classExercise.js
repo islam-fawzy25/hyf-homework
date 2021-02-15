@@ -1,3 +1,5 @@
+
+/*
 const myFavorietDishes = ['pasta','pizza','shawrma'];
 const ulElem = document.getElementById('favorietDishes');
 ulElem.innerHTML = 'My Favoriet Dishes'
@@ -22,8 +24,8 @@ function myFunction(){
 
 
 
-}
-
+*/
+/*
 const podcasts = [{
    name: 'The mystery om of Johan Klausen Varbourg',
    imageUrl: 'https://picsum.photos/536/354'
@@ -66,9 +68,4 @@ const podcasts = [{
 
 
 
-//const test = 'text'
-// myFavorietDishes.forEach(element => {
- 
-});
-// const go = creatLi + ulElem
-// const declarLi= document.querySelector('ul')
+*/
