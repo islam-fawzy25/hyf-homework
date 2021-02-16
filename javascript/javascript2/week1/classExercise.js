@@ -13,10 +13,10 @@ creatLi.innerText = 'hi';
  const go = creatLi + ulElem
 
 for (i=0 ; i < myFavorietDishes.length ; i++){
-myFavorietDishes[i] 
+myFavorietDishes[i]
 }
 
-window.color 
+window.color
 document.getElementById('color').addEventListener('click',myFunction)
 function myFunction(){
    document.querySelector('body').style.backgroundColor ='Pink'
@@ -42,16 +42,16 @@ const podcasts = [{
    name: 'Breakfast news - Dinner edition'
    }
    ];
-   
+
    let podcastUl = document.createElement("ul");
-   
+
    for (let i = 0; i < podcasts.length; i++) {
-   
+
    let myPodcast = document.createElement("li");
    let headder = document.createElement("h1");
    headder.innerHTML = podcasts[i].name;
    myPodcast.appendChild(headder);
-   
+
    if (podcasts[i].imageUrl) {
    let myImage = document.createElement("img");
    myImage.src = podcasts[i].imageUrl;
@@ -60,9 +60,9 @@ const podcasts = [{
    myPodcast.appendChild(myImage);
    }
    podcastUl.appendChild(myPodcast);
-   
+
    }
-   
+
    let Body = document.querySelector("body");
    Body.appendChild(podcastUl);
 
