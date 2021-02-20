@@ -1,20 +1,10 @@
 // Homeworke js2/week1 
 //Problem solving cardio
 //Find the shortest word
-
 const danishWords = ["bil", "plante", "kaffe", "bog", "ø", "planetarium"];
-function letters(danishWords) {
-    const splitArr = danishWords.map(function (element, index, array) {
-        return element.split('');
-    });
-    const gotArrLeng = splitArr.map(function (element, index, array) {
-        return element.length
-    });
-    const shortestWord = Math.min(...gotArrLeng);
-    const findShortestWord = gotArrLeng.indexOf(shortestWord);
-    console.log(danishWords[findShortestWord]);
-}; // returns 'ø'
-letters(danishWords);
+const reducer = (shortestWord, currentWord) => currentWord.length < shortestWord.length || shortestWord.length === 0 ? currentWord : shortestWord;
+
+console.log(danishWords.reduce(reducer, ""));// "ø" 
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
@@ -22,32 +12,26 @@ letters(danishWords);
 //Find the individual number and the total number of Danish letters in a string.
 
 const danishString = "Jeg har en blå bil";
+const danishString2 = "Blå grød med røde bær";
+
 function countLetter(danishString) {
+    const danishLetters = { 'total': 0, "æ": 0, "ø": 0, "å": 0 };
     const danishStr = danishString.toLowerCase();
     const splitStr = danishStr.split('');
-    const sumLetter = splitStr.filter(element => element === 'å');
-    const letterApperance = { total: sumLetter.length, å: sumLetter.length };
-    return console.log(letterApperance);
-}; // returns {total: 1, å: 1}
-countLetter(danishString);
 
-const danishString2 = "Blå grød med røde bær";
-function countLetters(danishString2) {
-    const danishStr = danishString2.toLowerCase();
-    const splitStr = danishStr.split('');
+    splitStr.map(function (elem) {
+        if (elem in danishLetters) {
+            danishLetters[elem]++;
+            danishLetters['total']++;
+        }
+    });
+    return console.log(danishLetters);
+}
+countLetter(danishString)
 
-    const sumLetter1 = splitStr.filter(element => element === 'æ');
-    const sumLetter2 = splitStr.filter(element => element === 'ø');
-    const sumLetter3 = splitStr.filter(element => element === 'å');
+countLetter(danishString2)
 
-    const letterApperance = {
-        total: (sumLetter1.length + sumLetter2.length + sumLetter3.length)
-        , æ: sumLetter1.length, ø: sumLetter2.length, å: sumLetter3.length
-    };
-    return console.log(letterApperance);
-}; // returns {total: 4, æ: 1, ø: 2, å: 1}
-countLetters(danishString2);
-
+/*
 /**************************************************************************************/
 //Spirit animal name generator
 /*
@@ -62,38 +46,36 @@ const animalsNames = ['The loyal Dog', 'The lovely Cat', 'The brave Lion',
 
 const newName = ['The sharpe egel', 'The big elephant', 'The amzing bird', 'The wonderful fish '];
 
-const a = 0;
-const b = animalsNames.length - 1;
-const x = 0;
-const y = newName.length - 1;
+const minAnimalsNames = 0;
+const maxAnimalsNames = animalsNames.length - 1;
+const minNames = 0;
+const maxNames = newName.length - 1;
 function formData() {
     const userName = document.getElementById('userName').value;
-    const noUserName = document.getElementById('error');
-    const randomNum = randomIntFromInterval(a, b);
+    const errorElement = document.getElementById('error');
+    const randomNum = getRandomIntFromInterval(minAnimalsNames, maxAnimalsNames);
     const printName = animalsNames[randomNum];
     if (userName == '' || userName == !String) {
-        return noUserName.innerHTML = ' Please enter your name';
+        return errorElement.innerHTML = ' Please enter your name';
     };
     document.writeln('Name: ' + userName);
     document.writeln('- ' + printName);
-    function randomIntFromInterval(min, max) {
+    function getRandomIntFromInterval(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
     };
-    randomIntFromInterval(a, b);
 };
 
 function spiritAnimal() {
     const userName = document.getElementById('userName').value;
-    const noUserName = document.getElementById('error');
-    const randomNum = randomNames(x, y);
+    const errorElement = document.getElementById('error');
+    const randomNum = getRandomIntFromInterval(minNames, maxNames);
     const printName = newName[randomNum];
     if (userName == '' || userName == !String) {
-        return noUserName.innerHTML = ' Please enter your name';
+        return errorElement.innerHTML = ' Please enter your name';
     };
     document.writeln('Name: ' + userName);
     document.writeln('- ' + printName);
-    function randomNames(min, max) {
+    function getRandomIntFromInterval(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
     };
-    randomNames(x, y);
 };
