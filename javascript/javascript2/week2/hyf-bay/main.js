@@ -63,7 +63,19 @@ minPrice.addEventListener('keyup', function () {
     return minimumPrice;
 });
 
+// Sort the products - optional
 
+// hi ,Simon .Could you please tell me where is the problem here .
+// result in console perfect , but in DOM 'browser page' = Undifine.
+const sort = document.getElementById('sort')
+
+sort.addEventListener('click',function(){
+const rateArray= products.map(item =>item.rating).sort((a,b) =>b-a)
+console.log(rateArray);
+const printResult = document.getElementById('filterList').innerText = ' ';
+renderProducts(rateArray);
+return rateArray;
+});
 
 
 
