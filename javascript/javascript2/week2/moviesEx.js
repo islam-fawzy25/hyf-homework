@@ -1,5 +1,3 @@
-// i used just few objects of the array here
-const movies = [{"title": "'71","year": 2014,"rating": 7.2,"votes": 41702,"running_times": 5940},{"title": "'A' gai wak","year": 1983,"rating": 7.4,"votes": 11942,"running_times": 6300},{"title": "'Breaker' Morant","year": 1980,"rating": 7.9,"votes": 10702,"running_times": 6420},{"title": "'Crocodile' Dundee II","year": 1988,"rating": 5.5,"votes": 47180,"running_times": 6480},{"title": "(500) Days of Summer","year": 2009,"rating": 7.7,"votes": 412368,"running_times": 5700},{"title": "*batteries not included","year": 1987,"rating": 6.6,"votes": 25636,"running_times": 6360},{"title": "...E tu vivrai nel terrore! L'aldilà","year": 1981,"rating": 6.9,"votes": 16484,"running_times": 5220}];
 
 // Working with movies
 
@@ -24,9 +22,8 @@ const longTitleMovies = movies.filter(title => (title.title.length >= 25) ? true
 //console.log(longTitleMovies);
 
 // 3. //number of movies made between 1980-1989
-const yearOfMadeMovies = movies.filter(year => (year.year >= 1980 && year.year <= 1989) ? true : false);
-const numberOfMovies = yearOfMadeMovies.length;
-console.log(numberOfMovies);
+const yearOfMadeMovies = movies.filter(movie => (movie.year >= 1980 && movie.year <= 1989));
+console.log(yearOfMadeMovies);
 
 // .4 //Rating array
 const ratingMovies = movies.map(item => {
