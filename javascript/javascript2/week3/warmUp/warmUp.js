@@ -5,9 +5,8 @@ window.addEventListener('load', function () {
     setTimeout(() => {
         console.log('Called after 2.5 seconds');
     }, 2500);
-
-})
-//2.
+});
+//2.///////////////////////////////////////////////////////
 function delayFunction(delay, string) {
     setTimeout(() => {
         console.log(string);
@@ -16,7 +15,7 @@ function delayFunction(delay, string) {
 //delayFunction(5,'This string logged after 5 secconds');
 //delayFunction(3,'This string logged after 3 secconds');
 
-//3.
+//3./////////////////////////////////////////////////////////////////////
 const button = document.getElementById('btn');
 button.addEventListener('click', function () {
     setTimeout(() => {
@@ -24,26 +23,23 @@ button.addEventListener('click', function () {
     }, 5000);
 });
 
-//4.
+//4.//////////////////////////////////////////////////////////////
 const earthLooger = () => { console.log('earth'); };
 const saturnLooger = () => { console.log('saturn'); };
 
-function planetLogFunction() {
-    //  console.log(print);
-}
-planetLogFunction(saturnLooger())
-planetLogFunction(earthLooger())
+function planetLogFunction(item) {
+   return  item()
+};
+planetLogFunction(saturnLooger);
+planetLogFunction(earthLooger);
 
-//5.
+//5.///////////////////////////////////////////////////////////////
 function geoFindMe() {
 
     const status = document.querySelector('#status');
     const mapLinkLat = document.querySelector('#map-link');
-    const mapLinkLong = document.querySelector('#longitude');
     mapLinkLat.href = '';
     mapLinkLat.textContent = '';
-    mapLinkLong.href = '';
-    mapLinkLong.textContent = '';
 
     function success(position) {
         const latitude = position.coords.latitude;
@@ -51,21 +47,19 @@ function geoFindMe() {
 
         status.textContent = '';
         mapLinkLat.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
-        mapLinkLat.textContent = `This is  latitude: ${latitude} `;
-        mapLinkLong.textContent = `This is  longitude: ${longitude} `;
-    }
+        mapLinkLat.textContent = `This is  latitude: ${latitude}  This is  longitude: ${longitude} `;
+    };
 
     function error() {
         status.textContent = 'Unable to retrieve your location';
-    }
-
+    };
     if (!navigator.geolocation) {
         status.textContent = 'Geolocation is not supported by your browser';
     } else {
         status.textContent = 'Locating…';
         navigator.geolocation.getCurrentPosition(success, error);
-    }
-}
+    };
+};
 
 document.querySelector('#find-me').addEventListener('click', geoFindMe);
 //!!!!!!!!!!!!!!???
@@ -75,11 +69,10 @@ function runAfterDelay(delay, callback) {
     setTimeout(() => {
         return callback();
     }, delay * 1000);
-}
-//???!!!!!!!!!!!
+};
+runAfterDelay(4,  () => console.log('Should be logged after 4 seconds'));
+//8./////////////////////////////////////////////////////////////////////
 
-runAfterDelay(4,  () => console.log('Should be looged after 4 seconds'))
-//8.
 const body = document.querySelector('body');
 
 body.addEventListener('dblclick', function () {
@@ -87,7 +80,7 @@ body.addEventListener('dblclick', function () {
         console.log('double click!');
     }, 500);
 });
-//9.
+//9./////////////////////////////////////////////////////////////
 
 function jokeCreator(shouldTellFunnyJoke, logFunnyJoke, logBadJoke) {
     logFunnyJoke=() => console.log('Funny joke');
