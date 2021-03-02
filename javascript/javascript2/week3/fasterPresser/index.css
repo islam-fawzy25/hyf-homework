@@ -1,0 +1,41 @@
+body {
+    background-color: cornflowerblue;
+    text-align: center;
+}
+
+#countS {
+    float: left;
+    background-color: darkmagenta;
+    font-size: x-large;
+    width: 300px;
+    border: 15px solid green;
+    padding: 50px;
+    margin: 20px;
+}
+
+#countL {
+    float: right;
+    background-color: darkmagenta;
+    font-size: x-large;
+    width: 300px;
+    border: 15px solid green;
+    padding: 50px;
+    margin: 20px;
+}
+
+#input {
+    height: 30px;
+}
+
+#winner{
+    color: red;
+    font-size: xx-large;
+}
+
+#btn{
+    background-color:seagreen;
+    border-radius: 30%;
+    width: 100px;
+    height: 100px;
+    
+}
