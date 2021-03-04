@@ -25,6 +25,7 @@ body {
 
 #input {
     height: 30px;
+    width: 100px;
 }
 
 #winner{
@@ -38,4 +39,10 @@ body {
     width: 100px;
     height: 100px;
     
+}
+
+#restart{
+    color: cornsilk;
+    background-color: darkblue;
+    height: 50px;
 }
