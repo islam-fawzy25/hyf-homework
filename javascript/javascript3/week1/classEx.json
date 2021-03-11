@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1235,
+        "name": "hotdogpizza",
+        "price": 100,
+        "drink": false ,
+        "extra":["cheese","lettuce"]
+    },
+    {
+        "id": 1285,
+        "name": "meatpizza",
+        "price": 150,
+        "drink":[ "soda","pepsi","beer"],
+        "extra":null
+
+    }
+]
