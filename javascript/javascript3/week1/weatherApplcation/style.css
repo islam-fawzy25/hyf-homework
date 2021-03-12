@@ -47,7 +47,7 @@ main {
 
 .app-title{
     width: 300px;
-    height: 50px;
+    height: 120px;
     border-radius: 10px 10px 0 0;
 }
 
@@ -63,8 +63,8 @@ main {
 
 .weather-container{
     width: 300px;
-    height: 130px;
-    background-color: #F4F9FF;
+    height: 160px;
+    background-color: #5a98e4;
 }
 
 .weather-icon{
@@ -78,9 +78,22 @@ main {
 }
 
 #map{
-  
     height: 250px;
+
+
 }
 
 
 
+button{
+
+    color: #fff !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #60a3bc;
+    padding: 20px;
+    border-radius: 50px;
+    display: inline-block;
+    border: none;
+    transition: all 0.4s ease 0s;
+}
