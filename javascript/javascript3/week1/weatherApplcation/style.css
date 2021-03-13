@@ -1,22 +1,20 @@
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: "Rimouski";
 }
 
-body{
+body {
     background-color: #293251;
 }
 
-.container{
-    width: 300px;    
+.container {
+    width: 300px;
     background-color: #FFF;
-    
     display: block;
     margin: 0 auto;
-    
     border-radius: 10px;
-    padding-bottom : 5px;
+    padding-bottom: 5px;
 }
 
 #input {
@@ -25,14 +23,13 @@ body{
     padding: 10px 15px;
     border: none;
     outline: none;
-    background-color:royalblue;
-    color:wheat;
+    background-color: royalblue;
+    color: wheat;
     border-radius: 16px 0px 16px 0px;
-    border-bottom: 3px solid white; 
-font-size: 20px;
-font-weight: 300;
-transition: 0.2s ease-out;
-
+    border-bottom: 3px solid white;
+    font-size: 20px;
+    font-weight: 300;
+    transition: 0.2s ease-out;
 }
 
 main {
@@ -44,14 +41,13 @@ main {
     padding: 5px 15px 50px;
 }
 
-
-.app-title{
+.app-title {
     width: 300px;
     height: 120px;
     border-radius: 10px 10px 0 0;
 }
 
-.app-title p{
+.app-title p {
     text-align: center;
     padding: 15px;
     margin: 0 auto;
@@ -59,34 +55,27 @@ main {
     color: #293251;
 }
 
-
-
-.weather-container{
+.weather-container {
     width: 300px;
-    height: 160px;
+    height: 100px;
     background-color: #5a98e4;
 }
 
-.weather-icon{
+.weather-icon {
     width: 300px;
     height: 128px;
 }
 
-.weather-icon img{
+.weather-icon img {
     display: block;
     margin: 0 auto;
 }
 
-#map{
+#map {
     height: 250px;
-
-
 }
 
-
-
-button{
-
+button {
     color: #fff !important;
     text-transform: uppercase;
     text-decoration: none;

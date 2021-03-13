@@ -1,5 +1,4 @@
-// Tutorial by http://youtube.com/CodeExplained
-// api key : 82005d27a116c2880c8f0fcb866998a0
+//google api =AIzaSyCFaZoWcHNecGECjLPw9VuU7D89ARNieg0
 const ApiKey = '0904bdb6c689df374189c5ab06c21df6 '
 
 //get elements
@@ -7,8 +6,8 @@ const button = document.getElementById('button')
 const input = document.getElementById('input')
 const main = document.querySelector('main')
 const iconElement = document.querySelector('.weather-icon img')
-const searchElement = document.getElementById('map')
-const userLocation = document.getElementById('userLocation')
+
+const message = document.getElementById('msg')
 
 // Creat elements
 const cityName = document.createElement('h3')
@@ -27,7 +26,9 @@ main.appendChild(weatherType)
 main.appendChild(windSpeed)
 main.appendChild(sunset)
 main.appendChild(sunrise)
-
+//google elemnents
+const searchElement = document.getElementById('map')
+const userLocation = document.getElementById('userLocation')
 const searchedCity = ''
 const latData = 0
 const lngData = 0
@@ -35,9 +36,15 @@ const lngData = 0
 // main function to get data from JSON
 const getWeather = function () {
     let searchedCity = input.value
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&units=metric&appid=${ApiKey}`)
-        .then(Response => Response.json())
-        .then(weatherData => readData(weatherData))
+    if (input.value == '') {
+        message.innerText = 'Please enter Valid city name'
+        message.style.backgroundColor = 'red'
+    } else {
+        message.style.visibility = 'hidden'
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&units=metric&appid=${ApiKey}`)
+            .then(Response => Response.json())
+            .then(weatherData => readData(weatherData))
+    }
 }
 // get and print weather data on DOM
 function readData(data) {
@@ -45,7 +52,7 @@ function readData(data) {
     //print datat in elements 
     cityName.innerText = data.name + ' ' + data.sys.country
     temperature.innerText = Math.round(data.main.temp) + ' °C'
-    // weatherType.innerText = data.weather[0].main
+    weatherType.innerText = data.weather[0].description
     windSpeed.innerText = 'Wind Speed :  ' + Math.round(data.wind.speed) + ' m/s'
     // clouds.innerText = 'Clouds :  ' + data.clouds.all
     sunrise.innerText = 'Sunrise   ' + new Date(data.sys.sunrise * 1000).toLocaleTimeString([], {
@@ -56,7 +63,7 @@ function readData(data) {
         hour: "2-digit",
         minute: "2-digit"
     })                    //`icons/${data.weather[0].icon}.png`
-    iconElement.src =   `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+    iconElement.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
     // location variable and calling back map function 
     let latData = data.coord.lat
     let lngData = data.coord.lon
@@ -86,8 +93,10 @@ button.addEventListener('click', function () {
 userLocation.addEventListener('click', function () {
     if ('geolocation' in navigator) {
         console.log('geolocation available ');
+        message.style.visibility = 'hidden'
+
         navigator.geolocation.getCurrentPosition(position => {
-          //  console.log(position);
+            //  console.log(position);
             const lat = position.coords.latitude
             const long = position.coords.longitude
             const getWeather = function () {
@@ -99,10 +108,12 @@ userLocation.addEventListener('click', function () {
             readData(data)
             initMap(lat, long)
         })
+    } else {
+        message.innerText = 'Your Location not support in this websit'
+        message.style.backgroundColor = 'red'
     }
 })
 
 
 
-//google api =AIzaSyCFaZoWcHNecGECjLPw9VuU7D89ARNieg0
 
