@@ -6,13 +6,14 @@
 body {
     background-image: url('bg.jpg');
     font-family: cursive;
+    margin: 100px;
     display: flex;
-    margin: 20px;
     align-items: center;
     flex-direction: column;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
+    background-repeat: repeat;
+    background-size:cover;
+    background-position:  center;              
+    color:red;
 }
 
 li {
@@ -22,25 +23,37 @@ li {
     margin: 5px;
 }
 
-input {
+#input {
     width: 50%;
     max-width: 100%;
     padding: 10px 15px;
     border: none;
     outline: none;
     background-color: rgb(225, 222, 65);
-    color: rgb(43, 46, 223);
+    color: royalblue;
     border-radius: 16px 0px 16px 0px;
-    border-bottom: 3px solid white;
+    border-bottom: 3px solid red;
     font-size: 20px;
     font-weight: 300;
     transition: 0.2s ease-out;
-}
 
+}
+#numberOfGif{
+    width: 50px;
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    background-color: rgb(225, 222, 65);
+    color: royalblue;
+    border-radius: 16px 0px 16px 0px;
+    border-bottom: 3px solid red;
+    font-weight: 300;
+
+}
 button {
     border-radius: 50px;
     height: 70px;
     width: 100px;
     background-color: greenyellow;
-    color: grey;
+    color: royalblue;
 }

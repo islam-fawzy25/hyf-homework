@@ -1,10 +1,6 @@
 
 // 1. Exercise : JSON 
 
-
-
-
-
 /*
 
 fetch('http://api.open-notify.org/astros.json')
@@ -38,7 +34,7 @@ async function hey() {
     const code = next.url
     console.log(code);
 
-}*/ 
+}*/
 
 const printName = document.createElement('h3')
 const imgDog = document.createElement('img')
@@ -46,49 +42,25 @@ const imgDog = document.createElement('img')
 
 setInterval(() => {
     const getGogImg = fetch('https://dog.ceo/api/breeds/image/random')
-    .then(response => response.json())
-    .then(dogData => {
-        imgDog.src = dogData.message
-        imgDog.width='400'
-    })
+        .then(response => response.json())
+        .then(dogData => {
+            imgDog.src = dogData.message
+            imgDog.width = '400'
+        })
     const getBreedsName = fetch('https://dog.ceo/api/breeds/list/all')
-    .then(response => response.json())
-    .then(dogName => {
-        const arrNames = dogName.message
-        const breeds = Object.keys(arrNames)
-        const randomName = breeds[Math.floor(Math.random() * breeds.length)]
-        console.log(randomName);
-        printName.innerText = randomName
-    })
+        .then(response => response.json())
+        .then(dogName => {
+            const arrNames = dogName.message
+            const breeds = Object.keys(arrNames)
+            const randomName = breeds[Math.floor(Math.random() * breeds.length)]
+            console.log(randomName);
+            printName.innerText = randomName
+        })
 }, 2000);
 
 
 document.body.appendChild(imgDog)
 document.body.appendChild(printName)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*
 const orderJs = { name: 'Pizza', id: 5, price: '100', drinks: 'pepsi', extra: false }

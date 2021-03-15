@@ -1,5 +1,3 @@
-//google api =AIzaSyCFaZoWcHNecGECjLPw9VuU7D89ARNieg0
-const ApiKey = '0904bdb6c689df374189c5ab06c21df6 '
 
 //get elements
 const button = document.getElementById('button')
@@ -17,7 +15,7 @@ const windSpeed = document.createElement('div')
 const clouds = document.createElement('div')
 const sunrise = document.createElement('div')
 const sunset = document.createElement('div')
-
+console.log(ApiKey);
 // Append elements
 main.appendChild(cityName)
 main.appendChild(temperature)
@@ -44,6 +42,11 @@ const getWeather = function () {
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&units=metric&appid=${ApiKey}`)
             .then(Response => Response.json())
             .then(weatherData => readData(weatherData))
+            .catch(() => {
+                message.style.visibility = 'visible'
+                message.style.backgroundColor = 'red'
+                message.innerText = 'Invalid city name'
+            })
     }
 }
 // get and print weather data on DOM
@@ -62,7 +65,7 @@ function readData(data) {
     sunset.innerText = 'Sunset   ' + new Date(data.sys.sunset * 1000).toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit"
-    })                    //`icons/${data.weather[0].icon}.png`
+    })
     iconElement.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
     // location variable and calling back map function 
     let latData = data.coord.lat
@@ -84,34 +87,34 @@ function initMap(latitude, longitude) {
     });
 }
 // call weather data with click on button 
-button.addEventListener('click', function () {
+button.addEventListener('click', () => {
     getWeather()
     readData()
 })
 
 // get weather by  user location 
-userLocation.addEventListener('click', function () {
-    if ('geolocation' in navigator) {
-        console.log('geolocation available ');
-        message.style.visibility = 'hidden'
+userLocation.addEventListener('click', () =>{
+    if('geolocation' in navigator) {
+    console.log('geolocation available ');
+    message.style.visibility = 'hidden'
 
-        navigator.geolocation.getCurrentPosition(position => {
-            //  console.log(position);
-            const lat = position.coords.latitude
-            const long = position.coords.longitude
-            const getWeather = function () {
-                fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${ApiKey}`)
-                    .then(Response => Response.json())
-                    .then(weatherData => readData(weatherData))
-            }
-            getWeather()
-            readData(data)
-            initMap(lat, long)
-        })
-    } else {
-        message.innerText = 'Your Location not support in this websit'
-        message.style.backgroundColor = 'red'
-    }
+    navigator.geolocation.getCurrentPosition(position => {
+        //  console.log(position);
+        const lat = position.coords.latitude
+        const long = position.coords.longitude
+        const getWeather = function () {
+            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${ApiKey}`)
+                .then(response => response.json())
+                .then(weatherData => readData(weatherData))
+        }
+        getWeather()
+        readData(data)
+        initMap(lat, long)
+    })
+} else {
+    message.innerText = 'Your Location not support in this websit'
+    message.style.backgroundColor = 'red'
+}
 })
 
 

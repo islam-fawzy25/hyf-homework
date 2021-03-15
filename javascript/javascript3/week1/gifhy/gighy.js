@@ -14,26 +14,31 @@ const numberOfGif = document.getElementById('numberOfGif')
 const main = document.querySelector('main')
 const ul = document.createElement('ul')
 main.appendChild(ul)
-
+// get data from json link 
 const getGif = function () {
-    fetch(`http://api.giphy.com/v1/gifs/search?q=${input.value}&api_key=cryDd2N06MslIPCYgQc7yBrOH3WucmCo&limit=${numberOfGif.value}`)
+    fetch(`http://api.giphy.com/v1/gifs/search?q=${input.value}&api_key=${gifApi}&limit=${numberOfGif.value}`)
         .then(request => request.json())
-        .then(gif => {
-            console.log(gif);
-            const gifsArray = gif.data
-            ul.innerHTML = ''
-            gifsArray.forEach(item => {
-                const li = document.createElement('li')
-                ul.appendChild(li)
-                const img = new Image(300, 300)
-                li.appendChild(img)
-                img.src = item.images.original.url
-            })
+        .then(data => {
+            sendData(data)
+            console.log(data);
+
         })
 }
-//input.addEventListener('keyup', getGif)
-button.addEventListener('click', getGif)
+// send data to elements in html 
+function sendData(gif) {
+    const gifsArray = gif.data
+    ul.innerHTML = ''
+    gifsArray.forEach(item => {
+        const li = document.createElement('li')
+        ul.appendChild(li)
+        const img = new Image(300, 300)
+        li.appendChild(img)
+        img.src = item.images.original.url
+    })
+}
 
-
-
+button.addEventListener('click', () => {
+    getGif()
+    sendData()
+})
 
