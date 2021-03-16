@@ -1,16 +1,14 @@
 //JavaScript3 - Week 2
 
-
 //Movies exercise
 
 async function movies() {
   const getUrl = await fetch('https://gist.githubusercontent.com/pankaj28843/08f397fcea7c760a99206bcb0ae8d0a4/raw/02d8bc9ec9a73e463b13c44df77a87255def5ab9/movies.json')
   const movie = await getUrl.json()
-
   const badMovies = movie.filter(item => item.rating <= 4)
-  // console.log(badMovies);
+  console.log(badMovies);
   const badMovies2000 = badMovies.filter(item => item.year >= 2000)
-  // console.log(badMovies2000);
+  console.log(badMovies2000);
 }
 movies()
 
@@ -25,7 +23,7 @@ async function delay(resolveAfter) {
 }
 
 delay(8).then(() => {
-  console.log("I am called asynchronously");
+  console.log("I am called asynchronously after 8 seconds");
   // logged out after 8 seconds
 });
 
@@ -42,28 +40,27 @@ setTimeoutPromise(3000).then(() => {
   console.log("Called after 3 seconds");
 });
 
-
 async function getCurrentLocation() {
   new Promise((resolve, reject) => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(resolve)
-      // function showPosition(location) { 
-      //console.log(location);
-      // resolve()
-      // }
+    function getLocation() {
+      if (navigator.geolocation) {
+        resolve('her')
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        reject('Error!!')
+      }
+    }
 
-      function resolve(location) { console.log(location) }
-
-
-    } else { reject('can not find your location') }
-
+    function showPosition(position) {
+      console.log(position);
+    }
+    return getLocation()
   })
 }
 
 getCurrentLocation()
   .then((position) => {
     // called when the users position is found
-
     console.log(position);
   })
   .catch((error) => {
@@ -92,12 +89,11 @@ async function waitingFunction() {
     setTimeout(() => {
       console.log(getData);
     }, 3000);
-  }catch{console.log('Error');}
+  } catch { console.log('Error'); }
 }
 waitingFunction()
 
-// i prefer async i think it's better to write try/ catch so you must put two possibilites 
-// to implement it but promise you can write it without reject so probably you will forgot error message 
+// i prefer async/ await
 
 
 
