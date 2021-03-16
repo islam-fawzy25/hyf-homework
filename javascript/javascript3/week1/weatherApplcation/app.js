@@ -87,36 +87,39 @@ function initMap(latitude, longitude) {
     });
 }
 // call weather data with click on button 
-button.addEventListener('click', () => {
-    getWeather()
-    readData()
+document.addEventListener('DOMContentLoaded', () => {
+    button.addEventListener('click', () => {
+        getWeather()
+        readData()
+    })
 })
+
 
 // get weather by  user location 
-userLocation.addEventListener('click', () =>{
-    if('geolocation' in navigator) {
-    console.log('geolocation available ');
-    message.style.visibility = 'hidden'
+document.addEventListener('DOMContentLoaded', () => {
+userLocation.addEventListener('click', () => {
+    if ('geolocation' in navigator) {
+        console.log('geolocation available ');
+        message.style.visibility = 'hidden'
 
-    navigator.geolocation.getCurrentPosition(position => {
-        //  console.log(position);
-        const lat = position.coords.latitude
-        const long = position.coords.longitude
-        const getWeather = function () {
-            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${ApiKey}`)
-                .then(response => response.json())
-                .then(weatherData => readData(weatherData))
-        }
-        getWeather()
-        readData(data)
-        initMap(lat, long)
-    })
-} else {
-    message.innerText = 'Your Location not support in this websit'
-    message.style.backgroundColor = 'red'
-}
+        navigator.geolocation.getCurrentPosition(position => {
+            //  console.log(position);
+            const lat = position.coords.latitude
+            const long = position.coords.longitude
+            const getWeather = function () {
+                fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${ApiKey}`)
+                    .then(response => response.json())
+                    .then(weatherData => readData(weatherData))
+            }
+            getWeather()
+            readData(data)
+            initMap(lat, long)
+        })
+    } else {
+        message.innerText = 'Your Location not support in this websit'
+        message.style.backgroundColor = 'red'
+    }
 })
-
-
+})
 
 

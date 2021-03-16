@@ -39,24 +39,26 @@ async function hey() {
 const printName = document.createElement('h3')
 const imgDog = document.createElement('img')
 
+document.addEventListener('DOMContentLoaded',()=>{
+    setInterval(() => {
+        const getGogImg = fetch('https://dog.ceo/api/breeds/image/random')
+            .then(response => response.json())
+            .then(dogData => {
+                imgDog.src = dogData.message
+                imgDog.width = '400'
+            })
+        const getBreedsName = fetch('https://dog.ceo/api/breeds/list/all')
+            .then(response => response.json())
+            .then(dogName => {
+                const arrNames = dogName.message
+                const breeds = Object.keys(arrNames)
+                const randomName = breeds[Math.floor(Math.random() * breeds.length)]
+                console.log(randomName);
+                printName.innerText = randomName
+            })
+    }, 2000);
+})
 
-setInterval(() => {
-    const getGogImg = fetch('https://dog.ceo/api/breeds/image/random')
-        .then(response => response.json())
-        .then(dogData => {
-            imgDog.src = dogData.message
-            imgDog.width = '400'
-        })
-    const getBreedsName = fetch('https://dog.ceo/api/breeds/list/all')
-        .then(response => response.json())
-        .then(dogName => {
-            const arrNames = dogName.message
-            const breeds = Object.keys(arrNames)
-            const randomName = breeds[Math.floor(Math.random() * breeds.length)]
-            console.log(randomName);
-            printName.innerText = randomName
-        })
-}, 2000);
 
 
 document.body.appendChild(imgDog)
