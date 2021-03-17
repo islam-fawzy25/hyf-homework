@@ -36,26 +36,16 @@ async function setTimeoutPromise(delayTime) {
 
   })
 }
+
 setTimeoutPromise(3000).then(() => {
   console.log("Called after 3 seconds");
 });
 
-async function getCurrentLocation() {
-  new Promise((resolve, reject) => {
-    function getLocation() {
-      if (navigator.geolocation) {
-        resolve('her')
-        navigator.geolocation.getCurrentPosition(showPosition);
-      } else {
-        reject('Error!!')
-      }
-    }
-
-    function showPosition(position) {
-      console.log(position);
-    }
-    return getLocation()
-  })
+// get location with useing promise
+const getCurrentLocation = function () {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
 }
 
 getCurrentLocation()
