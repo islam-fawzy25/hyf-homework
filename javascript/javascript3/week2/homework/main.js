@@ -51,7 +51,11 @@ const getCurrentLocation = function () {
 getCurrentLocation()
   .then((position) => {
     // called when the users position is found
+    const lat =position.coords.latitude
+    const long =position.coords.longitude 
     console.log(position);
+    console.log('My latitude '+lat);
+    console.log('My longitude '+long);
   })
   .catch((error) => {
     // called if there was an error getting the users location
