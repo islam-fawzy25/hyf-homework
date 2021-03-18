@@ -4,7 +4,7 @@ body {
 }
 
 #countS {
-    float: left;
+    float:left ;
     background-color: darkmagenta;
     font-size: x-large;
     width: 300px;
@@ -14,7 +14,7 @@ body {
 }
 
 #countL {
-    float: right;
+    float:right ;
     background-color: darkmagenta;
     font-size: x-large;
     width: 300px;

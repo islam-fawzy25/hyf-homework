@@ -76,9 +76,7 @@ runAfterDelay(4,  () => console.log('Should be logged after 4 seconds'));
 const body = document.querySelector('body');
 
 body.addEventListener('dblclick', function () {
-    setTimeout(() => {
         console.log('double click!');
-    }, 500);
 });
 //9./////////////////////////////////////////////////////////////
 
