@@ -1,4 +1,3 @@
-
 // This code will move the li to the position 100, 100. Calling moveElement will return a promise that resolves after the li element has been moved.
 // get  elements  
 const redBox = document.querySelector('ul.marks li:nth-child(1)');
@@ -32,16 +31,15 @@ async function translateOneByOne() {
 
 //All at once with async
 async function translateAllAtOnce() {
-   try{
-    moveElement(redBox, redTarget)
-    moveElement(blueBox, blueTarget)
-    moveElement(greenBox, greenTarget)
-    console.log('All Elements have been moved ');
-   }catch{console.log('Error!!');}
-    
+    try {
+        moveElement(redBox, redTarget)
+        moveElement(blueBox, blueTarget)
+        moveElement(greenBox, greenTarget)
+        console.log('All Elements have been moved ');
+    } catch { console.log('Error!!'); }
+
 }
 //translateAllAtOnce()
-
 
 // All at once promise.all
 // const promisAllAtOnce = Promise.all([
@@ -51,7 +49,3 @@ async function translateAllAtOnce() {
 // ])
     // .then(() => console.log('All Elements have been moved'))
     // .catch(() => console.log('Error!!'))
-
-    // moveElement functions inside promise.all and i did not call promise.all and
-    // it works  already , how can i controll this ,i mean 
-    // no circle moves before i call promise without using function  ?!
