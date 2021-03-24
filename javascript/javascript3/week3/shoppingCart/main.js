@@ -56,8 +56,7 @@ class ShoppingCart {
 
   getTotal() {
     // Implement functionality here
-    const total = this.products.map(item => item.price)
-      .reduce((sum, value) => sum + value)
+    const total = this.products.map(item => item.price).reduce((sum, value) => sum + value)
     const h3 = document.createElement('h3')
     section.appendChild(h3)
     h3.innerText = 'Total= ' + total
@@ -100,7 +99,7 @@ const shoppingCart = new ShoppingCart();
 const flatscreen = new Product("flat-screen", 5000);
 shoppingCart.addProduct(flatscreen);
 // Creat some products 
-const car = new Product('Toyota ', 50000)
+const car = new Product('Toyota', 50000)
 const smarTv = new Product('Samsung Tv', 8000)
 const mobile = new Product('Iphone 11', 10000)
 const leaneCart = new ShoppingCart() // Creat leanne shopping cart 
@@ -122,6 +121,3 @@ button.addEventListener('click', function () {
   section.innerText = ''
   leaneCart.searchProduct(input.value)
 })
-
-
-

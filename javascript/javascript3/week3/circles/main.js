@@ -55,4 +55,16 @@ function manyCircles() {
         randomCircles.draw()
     }, 100);
 }
-manyCircles()
+//manyCircles()
+
+//Follow the mouse - optional
+canvasEle.addEventListener('mousemove',function myFunction(e) {
+    function r() {
+        const r = Math.floor(Math.random() * 30);
+        return r
+    }
+    var x = e.clientX;
+    var y = e.clientY;
+    const randomCircles = new Circle(x, y, r(), 0, 2 * Math.PI)
+    randomCircles.draw()
+  })
