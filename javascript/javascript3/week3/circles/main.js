@@ -3,6 +3,9 @@
 // Get Canavas element
 const canvasEle = document.querySelector("canvas");
 const c = canvasEle.getContext("2d");
+canvasEle.width = window.innerWidth;
+canvasEle.height = window.innerHeight;
+
 
 class Circle {
     constructor(x, y, r, startAngle, endAngle, fillColor) {
