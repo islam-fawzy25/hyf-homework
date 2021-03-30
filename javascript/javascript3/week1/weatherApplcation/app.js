@@ -1,3 +1,9 @@
+///api.openweathermap
+const ApiKey = '0904bdb6c689df374189c5ab06c21df6 '
+
+//google api 
+const googleApi = 'AIzaSyCFaZoWcHNecGECjLPw9VuU7D89ARNieg0'
+
 
 //get elements
 const button = document.getElementById('button')
