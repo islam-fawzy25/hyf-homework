@@ -3,6 +3,8 @@ const ApiKey = '0904bdb6c689df374189c5ab06c21df6 '
 
 //google api 
 const googleApi = 'AIzaSyCFaZoWcHNecGECjLPw9VuU7D89ARNieg0'
+
+
 //get elements
 const button = document.getElementById('button')
 const input = document.getElementById('input')
@@ -19,6 +21,7 @@ const windSpeed = document.createElement('div')
 const clouds = document.createElement('div')
 const sunrise = document.createElement('div')
 const sunset = document.createElement('div')
+console.log(ApiKey);
 // Append elements
 main.appendChild(cityName)
 main.appendChild(temperature)
@@ -124,5 +127,3 @@ userLocation.addEventListener('click', () => {
     }
 })
 })
-
-
