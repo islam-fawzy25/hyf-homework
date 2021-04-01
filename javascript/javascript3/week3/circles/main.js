@@ -2,7 +2,7 @@
 
 // Get Canavas element
 const canvasEle = document.querySelector("canvas");
-const c = canvasEle.getContext("2d");
+const canavasContext = canvasEle.getContext("2d");
 canvasEle.width = window.innerWidth;
 canvasEle.height = window.innerHeight;
 
@@ -18,18 +18,18 @@ class Circle {
     }
 
     draw() {
-        c.beginPath()
-        c.arc(this.userX, this.userY, this.userR, this.startAngle, this.endAngle)
-        c.stroke()
-        c.fillStyle = randomColor() // random color function
-        c.fill()
+        canavasContext.beginPath()
+        canavasContext.arc(this.userX, this.userY, this.userR, this.startAngle, this.endAngle)
+        canavasContext.stroke()
+        canavasContext.fillStyle = randomColor() // random color function
+        canavasContext.fill()
     }
 }
 // Creat circle
-const c1 = new Circle(50, 50, 20, 0, 2 * Math.PI)
-c1.draw()
-const c2 = new Circle(300, 200, 50, 10, 2 * Math.PI)
-c2.draw()
+const firstCircle = new Circle(50, 50, 20, 0, 2 * Math.PI)
+firstCircle.draw()
+const secondCircle = new Circle(300, 200, 50, 10, 2 * Math.PI)
+secondCircle.draw()
 
 // random color 
 function randomColor() {
@@ -41,33 +41,34 @@ function randomColor() {
 }
 // Random circles ,sizes, colors, position , radius 
 function manyCircles() {
-    function x() {
-        const x = Math.floor(Math.random() * 300);
+    function xHorizontalRandomPosition() {
+        const x = Math.floor(Math.random() * 1200);
         return x
     }
-    function y() {
-        const y = Math.floor(Math.random() * 300);
+    function yVerticalRandomPosition() {
+        const y = Math.floor(Math.random() * 600);
         return y
     }
-    function r() {
-        const r = Math.floor(Math.random() * 30);
+    function radius() {
+        const r = Math.floor(Math.random() * 100);
         return r
     }
     setInterval(() => {
-        const randomCircles = new Circle(x(), y(), r(), 0, 2 * Math.PI)
+        const randomCircles = new Circle(xHorizontalRandomPosition(),
+         yVerticalRandomPosition(), radius(), 0, 2 * Math.PI)
         randomCircles.draw()
     }, 100);
 }
-//manyCircles()
+//  manyCircles()
 
 //Follow the mouse - optional
 canvasEle.addEventListener('mousemove',function myFunction(e) {
-    function r() {
-        const r = Math.floor(Math.random() * 30);
+    function radius() {
+        const r = Math.floor(Math.random() * 70);
         return r
     }
-    var x = e.clientX;
-    var y = e.clientY;
-    const randomCircles = new Circle(x, y, r(), 0, 2 * Math.PI)
+    let x = e.clientX;
+    let y = e.clientY;
+    const randomCircles = new Circle(x, y, radius(), 0, 2 * Math.PI)
     randomCircles.draw()
   })

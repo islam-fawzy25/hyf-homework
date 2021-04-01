@@ -14,9 +14,9 @@ async function clas(userName) {
     })
 }
 
-const promiseAll = Promise.all([clas('Hani-far'), clas('Gohar33'), clas('Saidemm')])
-promiseAll.then(data => console.log(data))
-promiseAll.then((data) => {
+const getUsersRepositorysData = Promise.all([clas('Hani-far'), clas('Gohar33'), clas('Saidemm')])
+getUsersRepositorysData.then(data => console.log(data))
+getUsersRepositorysData.then((data) => {
 
     data.forEach((user) => {
         console.log(user.items[0].owner.login)
