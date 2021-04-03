@@ -1,16 +1,13 @@
 ///api.openweathermap
 const ApiKey = '0904bdb6c689df374189c5ab06c21df6 '
-
 //google api 
 const googleApi = 'AIzaSyCFaZoWcHNecGECjLPw9VuU7D89ARNieg0'
-
 
 //get elements
 const button = document.getElementById('button')
 const input = document.getElementById('input')
 const main = document.querySelector('main')
 const iconElement = document.querySelector('.weather-icon img')
-
 const message = document.getElementById('msg')
 
 // Creat elements
@@ -81,7 +78,6 @@ function readData(data) {
 // Google map functions 
 function initMap(latitude, longitude) {
     const url = { lat: latitude, lng: longitude };
-
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 13,
         center: url,
@@ -92,6 +88,7 @@ function initMap(latitude, longitude) {
         map: map,
     });
 }
+
 // call weather data with click on button 
 document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('click', () => {
@@ -100,30 +97,29 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 })
 
-
 // get weather by  user location 
 document.addEventListener('DOMContentLoaded', () => {
-userLocation.addEventListener('click', () => {
-    if ('geolocation' in navigator) {
-        console.log('geolocation available ');
-        message.style.visibility = 'hidden'
+    userLocation.addEventListener('click', () => {
+        if ('geolocation' in navigator) {
+            console.log('geolocation available ');
+            message.style.visibility = 'hidden'
 
-        navigator.geolocation.getCurrentPosition(position => {
-            //  console.log(position);
-            const lat = position.coords.latitude
-            const long = position.coords.longitude
-            const getWeather = function () {
-                fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${ApiKey}`)
-                    .then(response => response.json())
-                    .then(weatherData => readData(weatherData))
-            }
-            getWeather()
-            readData(data)
-            initMap(lat, long)
-        })
-    } else {
-        message.innerText = 'Your Location not support in this websit'
-        message.style.backgroundColor = 'red'
-    }
-})
+            navigator.geolocation.getCurrentPosition(position => {
+                //  console.log(position);
+                const lat = position.coords.latitude
+                const long = position.coords.longitude
+                const getWeather = function () {
+                    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${ApiKey}`)
+                        .then(response => response.json())
+                        .then(weatherData => readData(weatherData))
+                }
+                getWeather()
+                readData(data)
+                initMap(lat, long)
+            })
+        } else {
+            message.innerText = 'Your Location not support in this websit'
+            message.style.backgroundColor = 'red'
+        }
+    })
 })
