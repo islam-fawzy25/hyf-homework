@@ -37,7 +37,7 @@ const lngData = 0
 // main function to get data from JSON
 const getWeather = function () {
     let searchedCity = input.value
-    if (input.value == '') {
+    if (input.value == '' ) {
         message.innerText = 'Please enter Valid city name'
         message.style.backgroundColor = 'red'
     } else {
@@ -45,11 +45,11 @@ const getWeather = function () {
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&units=metric&appid=${ApiKey}`)
             .then(Response => Response.json())
             .then(weatherData => readData(weatherData))
-            .catch(() => {
-                message.style.visibility = 'visible'
-                message.style.backgroundColor = 'red'
-                message.innerText = 'Invalid city name'
-            })
+            // .catch(() => {
+            //     message.style.visibility = 'visible'
+            //     message.style.backgroundColor = 'red'
+            //     message.innerText = 'Invalid city name'
+            // })
     }
 }
 // get and print weather data on DOM
@@ -59,7 +59,7 @@ function readData(data) {
     cityName.innerText = data.name + ' ' + data.sys.country
     temperature.innerText = Math.round(data.main.temp) + ' °C'
     weatherType.innerText = data.weather[0].description
-    windSpeed.innerText = 'Wind Speed :  ' + Math.round(data.wind.speed) + ' m/s'
+    windSpeed.innerText = 'Wind Speed :  ' + Math.round(data.wind.speed) + ' M/S'
     // clouds.innerText = 'Clouds :  ' + data.clouds.all
     sunrise.innerText = 'Sunrise   ' + new Date(data.sys.sunrise * 1000).toLocaleTimeString([], {
         hour: "2-digit",
