@@ -1,9 +1,9 @@
 -- 1.find out how many tasks are in the task table.
 select count(*)
-from task ; -- 35
+from task ; 
 
   -- 2. Find out how many tasks in the task table do not have a valid due date
-select count(task.id)
+select count(id)
 from task
   where due_date is null ; 
 
@@ -32,7 +32,7 @@ from task
   -- 7. Get the title and due date of all tasks where the title or description contains database
   select title , due_date 
   from task
-  where    title   like '%database%'  or description like  '%database%'; -- how to make or  ??!!
+  where    title   like '%database%'  or description like  '%database%'; 
   
  -- 8. Get the title and status (as text) of all tasks
 select task.title , status.name
