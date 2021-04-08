@@ -50,8 +50,7 @@ const findKeywords = movies.filter(movie => {
 
 //.7 //  duplicated Movies
 const titlesWithDuplicateWords = movies.filter(movie => movie.title.split(" ").length !== new Set(movie.title.split(" ")).size)
-console.log(titlesWithDuplicateWords)
-
+console.log(titlesWithDuplicateWords) 
 //8. // Calculatr the average rating 
 const sumAverage = movies.reduce((total, value) => {
   if (value.tag == 'Average') { return total + 1 }
