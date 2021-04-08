@@ -49,18 +49,8 @@ const findKeywords = movies.filter(movie => {
 //console.log(keywords);
 
 //.7 //  duplicated Movies
-// first i used map to get array of movies titles 
-const moviesTitles = movies.map(item => {
-  const getSplitedTitle = item.title.split([' '])
-  return getSplitedTitle
-})
-//console.log(moviesTitles);
-//then i used this from stack overflow
-let findDuplicates = arr => arr.filter((item, index) => arr.indexOf(item) != index)
-
-// finally workes :) 
-const duplicatedTitle = moviesTitles.filter(value => findDuplicates(value).length > 0);
-//console.log(duplicatedTitle);
+const titlesWithDuplicateWords = movies.filter(movie => movie.title.split(" ").length !== new Set(movie.title.split(" ")).size)
+console.log(titlesWithDuplicateWords)
 
 //8. // Calculatr the average rating 
 const sumAverage = movies.reduce((total, value) => {
