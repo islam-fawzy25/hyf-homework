@@ -37,19 +37,22 @@ const lngData = 0
 // main function to get data from JSON
 const getWeather = function () {
     let searchedCity = input.value
-    if (input.value == '' ) {
+    if (input.value == '') {
         message.innerText = 'Please enter Valid city name'
         message.style.backgroundColor = 'red'
     } else {
         message.style.visibility = 'hidden'
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&units=metric&appid=${ApiKey}`)
-            .then(Response => Response.json())
+            .then(response => {
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    message.style.visibility = 'visible'
+                    message.style.backgroundColor = 'red'
+                    message.innerText = 'Invalid city name'
+                }
+            })
             .then(weatherData => readData(weatherData))
-            // .catch(() => {
-            //     message.style.visibility = 'visible'
-            //     message.style.backgroundColor = 'red'
-            //     message.innerText = 'Invalid city name'
-            // })
     }
 }
 // get and print weather data on DOM
