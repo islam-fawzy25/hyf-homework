@@ -1,16 +1,13 @@
 ///api.openweathermap
 const ApiKey = '0904bdb6c689df374189c5ab06c21df6 '
-
 //google api 
 const googleApi = 'AIzaSyCFaZoWcHNecGECjLPw9VuU7D89ARNieg0'
-
 
 //get elements
 const button = document.getElementById('button')
 const input = document.getElementById('input')
 const main = document.querySelector('main')
 const iconElement = document.querySelector('.weather-icon img')
-
 const message = document.getElementById('msg')
 
 // Creat elements
@@ -46,13 +43,16 @@ const getWeather = function () {
     } else {
         message.style.visibility = 'hidden'
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&units=metric&appid=${ApiKey}`)
-            .then(Response => Response.json())
-            .then(weatherData => readData(weatherData))
-            .catch(() => {
-                message.style.visibility = 'visible'
-                message.style.backgroundColor = 'red'
-                message.innerText = 'Invalid city name'
+            .then(response => {
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    message.style.visibility = 'visible'
+                    message.style.backgroundColor = 'red'
+                    message.innerText = 'Invalid city name'
+                }
             })
+            .then(weatherData => readData(weatherData))
     }
 }
 // get and print weather data on DOM
@@ -62,7 +62,7 @@ function readData(data) {
     cityName.innerText = data.name + ' ' + data.sys.country
     temperature.innerText = Math.round(data.main.temp) + ' °C'
     weatherType.innerText = data.weather[0].description
-    windSpeed.innerText = 'Wind Speed :  ' + Math.round(data.wind.speed) + ' m/s'
+    windSpeed.innerText = 'Wind Speed :  ' + Math.round(data.wind.speed) + ' M/S'
     // clouds.innerText = 'Clouds :  ' + data.clouds.all
     sunrise.innerText = 'Sunrise   ' + new Date(data.sys.sunrise * 1000).toLocaleTimeString([], {
         hour: "2-digit",
@@ -81,7 +81,6 @@ function readData(data) {
 // Google map functions 
 function initMap(latitude, longitude) {
     const url = { lat: latitude, lng: longitude };
-
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 13,
         center: url,
@@ -92,6 +91,7 @@ function initMap(latitude, longitude) {
         map: map,
     });
 }
+
 // call weather data with click on button 
 document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('click', () => {
@@ -100,30 +100,29 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 })
 
-
 // get weather by  user location 
 document.addEventListener('DOMContentLoaded', () => {
-userLocation.addEventListener('click', () => {
-    if ('geolocation' in navigator) {
-        console.log('geolocation available ');
-        message.style.visibility = 'hidden'
+    userLocation.addEventListener('click', () => {
+        if ('geolocation' in navigator) {
+            console.log('geolocation available ');
+            message.style.visibility = 'hidden'
 
-        navigator.geolocation.getCurrentPosition(position => {
-            //  console.log(position);
-            const lat = position.coords.latitude
-            const long = position.coords.longitude
-            const getWeather = function () {
-                fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${ApiKey}`)
-                    .then(response => response.json())
-                    .then(weatherData => readData(weatherData))
-            }
-            getWeather()
-            readData(data)
-            initMap(lat, long)
-        })
-    } else {
-        message.innerText = 'Your Location not support in this websit'
-        message.style.backgroundColor = 'red'
-    }
-})
+            navigator.geolocation.getCurrentPosition(position => {
+                //  console.log(position);
+                const lat = position.coords.latitude
+                const long = position.coords.longitude
+                const getWeather = function () {
+                    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${ApiKey}`)
+                        .then(response => response.json())
+                        .then(weatherData => readData(weatherData))
+                }
+                getWeather()
+                readData(data)
+                initMap(lat, long)
+            })
+        } else {
+            message.innerText = 'Your Location not support in this websit'
+            message.style.backgroundColor = 'red'
+        }
+    })
 })
