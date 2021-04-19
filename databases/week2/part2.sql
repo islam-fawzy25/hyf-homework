@@ -1,21 +1,54 @@
 create database school_db ;
 use school_db;
 -- Class: with the columns: id, name, begins (date), ends (date)
-create table class (
-id int unsigned auto_increment primary key,
-name  varchar(255) not null unique,
-begins  datetime,
-ends datetime
+CREATE TABLE class (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE,
+    begins DATETIME,
+    ends DATETIME
 );
 
 -- Student: with the columns: id, name, email, phone, class_id (foreign key)
-create table student (
-id int unsigned auto_increment primary key ,
-name  varchar(255),
-email varchar(255),
-phone  varchar(255),
-class_id int unsigned not null,
-foreign key (class_id) references class(id)
+CREATE TABLE student (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    phone VARCHAR(255) NOT NULL,
+    class_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (class_id)
+        REFERENCES class (id)
+);
+
+-- Create an index on the name column of the student table.
+CREATE INDEX index_name
+ON student (name);
+
+/*
+Add a new column to the class table named status which can only have the
+ following values: not-started, ongoing, finished (hint: enumerations).
+*/
+ALTER TABLE class
+ADD status  enum ('not-started','ongoing','finished') default('not-started') not null;
+
+-- both of them seems that doing same thing what is the diffrent ??!!create database school_db ;
+use school_db;
+-- Class: with the columns: id, name, begins (date), ends (date)
+CREATE TABLE class (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE,
+    begins DATETIME,
+    ends DATETIME
+);
+
+-- Student: with the columns: id, name, email, phone, class_id (foreign key)
+CREATE TABLE student (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255),
+    phone VARCHAR(255),
+    class_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (class_id)
+        REFERENCES class (id)
 );
 
 -- Create an index on the name column of the student table.
@@ -34,12 +67,6 @@ ALTER TABLE SomeTable
     DEFAULT (0)--Optional Default-Constraint.
 WITH VALUES --Add if Column is Nullable and you want the Default Value for Existing Records.
 */
--- second solution : creat status table ,then alter column to class table 
-ALTER TABLE class 
-Drop status ;
 
 ALTER TABLE class
-ADD status  set ('not-started','ongoing','finished'); -- default('not-started');
--- ADD status_id enum ('not-started','ongoing','finished')  ;
-
--- both of them seems that doing same thing what is the diffrent ??!!
+ADD status  enum ('not-started','ongoing','finished') default('not-started');

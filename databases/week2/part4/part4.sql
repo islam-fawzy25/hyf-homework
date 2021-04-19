@@ -2,37 +2,44 @@ create schema tech_department ;
  use tech_department ;
  
  CREATE TABLE projects (
- id int unsigned auto_increment primary key ,
- name varchar(50) unique ,
- description text 
- ) ;
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) UNIQUE,
+    description TEXT
+);
  
- CREATE TABLE teams(
- id int unsigned auto_increment primary key ,
- name varchar(50) unique
- );
+ CREATE TABLE teams (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) UNIQUE,
+    leader_id INT UNSIGNED,
+    FOREIGN KEY (leader_id)
+        REFERENCES leaders (id)
+        ON DELETE SET NULL ON UPDATE CASCADE
+);
  
  CREATE TABLE leaders (
- id int unsigned auto_increment primary key,
- name varchar(50),
- email varchar(50)
- );
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255)
+);
  
  CREATE TABLE developers (
- id int unsigned auto_increment primary key ,
- name varchar (50),
- email varchar(50),
- leader_id int unsigned ,
- team_id int unsigned ,
- foreign key (leader_id) references leaders(id) on delete set null on update cascade,
-  foreign key (team_id) references teams(id) on delete set null on update cascade
- );
- 
-CREATE TABLE team_project(
-team_id int unsigned ,
-project_id int unsigned ,
-primary key(team_id,project_id),
-foreign key (team_id) references teams(id) on delete cascade on update cascade,
-foreign key (project_id) references projects(id) on delete cascade on update cascade
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255),
+    team_id INT UNSIGNED,
+    FOREIGN KEY (team_id)
+        REFERENCES teams (id)
+        ON DELETE SET NULL ON UPDATE CASCADE
 );
-
+ 
+CREATE TABLE team_project (
+    team_id INT UNSIGNED,
+    project_id INT UNSIGNED,
+    PRIMARY KEY (team_id , project_id),
+    FOREIGN KEY (team_id)
+        REFERENCES teams (id)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (project_id)
+        REFERENCES projects (id)
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
