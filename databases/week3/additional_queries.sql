@@ -18,8 +18,8 @@ FROM
     meal
         JOIN
     reservation ON reservation.meal_id = meal.id
-GROUP BY meal.id;
--- i stucked here , when i make where  sum(reservation.number_of_guests) >  meal.max_reservation it return Error !!??
+GROUP BY meal.id
+having max_reservation > SUM(reservation.number_of_guests);
 
 -- Get meals that partially match a title. Rød grød med will match the meal with the title Rød grød med fløde
 
