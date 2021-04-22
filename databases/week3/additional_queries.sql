@@ -16,10 +16,11 @@ SELECT
     meal.id
 FROM
     meal
-        JOIN
+        LEFT JOIN
     reservation ON reservation.meal_id = meal.id
 GROUP BY meal.id
-having max_reservation > SUM(reservation.number_of_guests);
+HAVING max_reservation > SUM(reservation.number_of_guests)
+    OR total_reservation IS NULL; 
 
 -- Get meals that partially match a title. Rød grød med will match the meal with the title Rød grød med fløde
 
