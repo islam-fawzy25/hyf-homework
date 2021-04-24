@@ -1,4 +1,4 @@
-//*
+/*
 Get all reviews
 Add a new review
 Get a review with any id, fx 1

@@ -5,33 +5,31 @@ id int unsigned auto_increment primary key ,
 title varchar(255) not null ,
 description text not null ,
 location varchar(255) not null,
-max_reservation int(1) check(max_reservation <= 9) not null,
-price decimal not null,
+max_reservation int unsigned not null,
+price decimal(10,2) unsigned not null,
 created_date  date not null
 );
-drop table meal;
-drop table review;
-drop table reservation;
+
 
 
 create table reservation(
 id int unsigned auto_increment primary key ,
-number_of_guests  int(1) check ( number_of_guests <= 9) not null ,  -- how to solve it ??!! how to make max number related to meal.max_reservation ??!!
-meal_id int unsigned ,
+number_of_guests  int unsigned not null ,  -- how to solve it ??!! how to make max number related to meal.max_reservation ??!!
+meal_id int unsigned not null,
 created_date date not null,
 contact_phonenumber varchar(255) not null,
 contact_name varchar(255) not null,
 contact_email varchar(255) unique not null,
- foreign key (meal_id) references meal(id) on delete set null on update cascade
+ foreign key (meal_id) references meal(id) on delete cascade on update cascade
 );
 
 create table review(
 id int unsigned auto_increment primary key ,
 title varchar(255),
 description text ,
-meal_id int unsigned, 
-stars int(1) not null check(stars <=5),
+meal_id int unsigned not null, 
+stars int unsigned not null,
 created_date date not null,
-foreign key (meal_id) references meal(id) on delete set null on update cascade
+foreign key (meal_id) references meal(id) on delete cascade on update cascade
 );
 

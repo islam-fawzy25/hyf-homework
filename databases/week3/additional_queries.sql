@@ -2,6 +2,7 @@
 Get meals that has a price smaller than a specific price fx 90
 Get meals that still has available reservations
 */
+
 SELECT 
     *
 FROM
@@ -10,7 +11,7 @@ WHERE
     price < 90;
 
 SELECT 
-    SUM(reservation.number_of_guests) AS total_reservation,
+    COALESCE(SUM(reservation.number_of_guests), 0) AS total_reservation,
     meal.max_reservation,
     meal.title,
     meal.id
@@ -19,9 +20,7 @@ FROM
         LEFT JOIN
     reservation ON reservation.meal_id = meal.id
 GROUP BY meal.id
-HAVING max_reservation > SUM(reservation.number_of_guests)
-    OR total_reservation IS NULL; 
-
+HAVING max_reservation > total_reservation;
 -- Get meals that partially match a title. Rød grød med will match the meal with the title Rød grød med fløde
 
 SELECT 
@@ -51,13 +50,15 @@ LIMIT 2;
 SELECT 
     *
 FROM
-    review
+    meal
+        JOIN
+    review ON review.meal_id = meal.id
 WHERE
-    stars >= 7;
+    stars > 3;
     
     -- Get reservations for a specific meal sorted by created_date
 SELECT 
-    *
+   reservation.*
 FROM
     meal
         JOIN
@@ -68,11 +69,10 @@ ORDER BY reservation.created_date;
 
 -- Sort all meals by average number of stars in the reviews
 SELECT 
-    meal.id, meal.title, AVG(review.stars)
+    meal.id, meal.title, AVG(review.stars) as average_stars
 FROM
     meal
         JOIN
     review ON meal.id = review.meal_id
-GROUP BY meal.id;
-
-
+GROUP BY meal.id
+order by average_stars desc;
