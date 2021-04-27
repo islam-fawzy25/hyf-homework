@@ -1,4 +1,5 @@
 [
+
   {
     "id": 1,
     "numberOfStars": 3,
@@ -6,6 +7,7 @@
     "mealId": 1,
     "createdAt": 12345
   },
+
   {
     "id": 2,
     "numberOfStars": 5,
@@ -13,6 +15,7 @@
     "mealId": 2,
     "createdAt": 43422
   },
+
   {
     "id": 3,
     "numberOfStars": 4,
@@ -20,5 +23,6 @@
     "mealId": 1,
     "createdAt": 12985
   }
+  
   
 ]
