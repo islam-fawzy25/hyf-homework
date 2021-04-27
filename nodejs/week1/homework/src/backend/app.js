@@ -49,6 +49,7 @@ app.get("/meal", function (request, response) {
 app.get("/reservations", function (request, response) {
   response.send(reservations);
 });
+
 //Respond random reservation
 app.get("/reservation", function (request, response) {
   const randomNumber = Math.floor(Math.random() * reservations.length);
