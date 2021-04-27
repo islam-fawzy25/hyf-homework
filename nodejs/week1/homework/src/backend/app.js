@@ -28,7 +28,7 @@ app.get("/meals", function (request, response) {
 
 // Respond cheap meal with (including it's reviews)
 const cheapMeals = meals.filter(item => {
- item.review = reviews.filter(obj => obj.mealId === item.id);
+ item.reviews = reviews.filter(obj => obj.mealId === item.id);
   return item.price < 60;
 });
 app.get("/cheap-meals", function (request, response) {  
@@ -38,7 +38,7 @@ app.get("/cheap-meals", function (request, response) {
 
 // Respond large meal with (including it's reviews)
 const largeMeals = meals.filter(item=>{
-  item.review = reviews.filter(obj => obj.mealId === item.id);
+  item.reviews = reviews.filter(obj => obj.mealId === item.id);
   return item.maxNumberOfGuests >5
 })
 app.get("/large-meals", function (request, response) {
