@@ -17,7 +17,7 @@ app.get("/", async (request, response) => {
 
 // Respons all meals and includes review it matching eachmeal
 const renderMeals = meals.map (item=>{
-  item.review = reviews.filter (obj=> obj.mealId === item.id)
+  item.reviews = reviews.filter (obj=> obj.mealId === item.id)
   return item
 })
 
