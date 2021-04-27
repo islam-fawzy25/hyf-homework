@@ -9,18 +9,18 @@
     },
     {
         "id" : 2,
-        "title" : "Grilled Mexican chicken ",
-        "maxNumberOfGuests" : 7,
-        "description" : "A nice night out eating delicious Mexican food",
-        "createdAt" : "2019/12/17 04:34",
+        "title" : "Italian Pizza",
+        "maxNumberOfGuests" : 6,
+        "description" : "A nice night out eating delicious Italian Pizza",
+        "createdAt" : "2019/10/10 14:34",
         "price" : 50
     },
     {
         "id" : 3,
-        "title" : "lasagna ",
-        "maxNumberOfGuests" : 6,
-        "description" : "A nice classic night  eating delicious lasagna",
-        "createdAt" : "2019/12/20 20:00",
-        "price" : 80
+        "title" : "Danish potato",
+        "maxNumberOfGuests" : 7,
+        "description" : "A nice night out eating delicious Danish food",
+        "createdAt" : "2019/12/7 14:34",
+        "price" : 75
     }
 ]
