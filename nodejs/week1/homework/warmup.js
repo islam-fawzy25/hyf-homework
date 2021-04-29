@@ -3,7 +3,7 @@ console.log("inside warmup file");
 
 class circle {
     constructor(radius){
-        this.raduis=radius
+        this.radius=radius
     }
     getDiameter(){    
     const diameter = 2 * this.radius
