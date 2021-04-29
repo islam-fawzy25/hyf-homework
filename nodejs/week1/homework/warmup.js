@@ -6,7 +6,9 @@ class circle {
         this.raduis=radius
     }
     getDiameter(){    
-      return  console.log(2 * this.raduis);
+    const diameter = 2 * this.radius
+    console.log(diameter)
+     return diameter  ;
     }
     getCircumference(){
         return console.log(2 * 3.14 * this.raduis);
@@ -33,4 +35,3 @@ const thirdCircle= new circle(5)
 thirdCircle.getDiameter()
 thirdCircle.getCircumference()
 thirdCircle.getArea()
-
