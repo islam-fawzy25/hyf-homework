@@ -29,32 +29,34 @@ router.get("/", async (request, response) => {
     }
 
     // implementation of filtered meals with  date
-    if('createdAfter' in request.query){
-   const createdAfter = parseInt(request.query.createdAfter ) 
-if(isNaN(createdAfter)){
-return response.status(400).send('Date must be integer')
-}
-filteredMeals = filteredMeals.filter(meal=>{
-  return meal.createdAt == createdAfter
-})
+    if ("createdAfter" in request.query) {
+      const createdAfter = parseInt(request.query.createdAfter);
+      if (isNaN(createdAfter)) {
+        return response.status(400).send("Date must be integer");
+      }
+      filteredMeals = filteredMeals.filter((meal) => {
+        return meal.createdAt == createdAfter;
+      });
     }
 
-        // implementation of filtered meals with  limit
+    // implementation of filtered meals with  limit
 
-if('limit' in request.query){
-const limit = parseInt(request.query.limit)
+    if ("limit" in request.query) {
+      const limit = parseInt(request.query.limit);
 
-if(isNaN(limit)){
-  return response.status(400).send('Limit must be integer')
-}
+      if (isNaN(limit)) {
+        return response.status(400).send("Limit must be integer");
+      }
+      filteredMeals.length = limit;
+    }
 
-filteredMeals.length = limit
-
-
-}
+    //if the users writes a query parameter that is not supported
+    const supportedQuery = ["limit", "createdAfter", "title", "maxPrice"];
+    // i will try to solve this point later
 
     response.json(filteredMeals);
     //console.log(meals);
+
     console.log("in /api/meals");
   } catch (error) {
     throw error;
@@ -65,7 +67,9 @@ filteredMeals.length = limit
 router.get("/:id", (request, response) => {
   const id = parseInt(request.params.id);
   if (isNaN(id)) {
-    return response.status(400).json({ error: "IDs must be integer" });
+    return response.status(400).send({ error: "IDs must be integer" });
+  } else if (meals[id - 1] === undefined) {
+    return response.status(400).send("This ID No matching any meal ids ");
   } else {
     response.json(meals[id - 1]);
   }
