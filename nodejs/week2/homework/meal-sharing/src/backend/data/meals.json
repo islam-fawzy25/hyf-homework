@@ -1,0 +1,28 @@
+[
+    {
+        "id" : 1,
+        "title" : "Indian food in the summer",
+        "maxNumberOfGuests" : 5,
+        "description" : "A nice night out eating delicious indian food",
+        "createdAt" : "2019/12/7 14:34",
+        "price" : 67
+    },
+
+    {
+        "id" : 2,
+        "title" : "Italian Pizza",
+        "maxNumberOfGuests" : 6,
+        "description" : "A nice night out eating delicious Italian Pizza",
+        "createdAt" : "2019/10/10 14:34",
+        "price" : 50
+    },
+
+    {
+        "id" : 3,
+        "title" : "Danish potato",
+        "maxNumberOfGuests" : 7,
+        "description" : "A nice night out eating delicious Danish food",
+        "createdAt" : "2019/12/7 14:34",
+        "price" : 75
+    }
+]
