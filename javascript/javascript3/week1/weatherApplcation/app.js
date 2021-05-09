@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 getWeather()
                 readData(data)
-                initMap(lat, long)
+              //  initMap(lat, long)
             })
         } else {
             message.innerText = 'Your Location not support in this websit'
