@@ -7,7 +7,7 @@ const meals = require("./../data/meals.json");
 router.get("/", async (request, response) => {
   let filteredMeals = meals;
 
-  try {
+  
     // implementation of filtered meals with  Max pric
     if ("maxPrice" in request.query) {
       const maxPrice = parseInt(request.query.maxPrice);
@@ -58,20 +58,20 @@ router.get("/", async (request, response) => {
     //console.log(meals);
 
     console.log("in /api/meals");
-  } catch (error) {
-    throw error;
-  }
-});
+ 
+  })
 
 //Respond with the json for the meal with the corresponding id
 router.get("/:id", (request, response) => {
   const id = parseInt(request.params.id);
+  let mealById =meals
   if (isNaN(id)) {
     return response.status(400).send({ error: "IDs must be integer" });
   } else if (meals[id - 1] === undefined) {
     return response.status(400).send("This ID No matching any meal ids ");
   } else {
-    response.json(meals[id - 1]);
+    mealById = mealById.filter(obj => obj.id === id)
+   return response.json(mealById);
   }
 });
 
