@@ -2,7 +2,6 @@ import "./App.css";
 import React from "react";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import TodoTable, { Header } from "./dash";
 
 const randomNumber = Math.floor(Math.random() * 6);
@@ -15,7 +14,6 @@ let todoList = [
       "work on implementation weekly homework to learn something new",
     deadlineDate: moment().add(randomNumber, "days").format("llll"),
   },
-
   {
     todoItem: "Shopping",
     description: "I have to buy headphone and new mobile ",
@@ -45,12 +43,10 @@ let todoList = [
   },
 ];
 
-const mapItems = todoList.map((obj) => {});
 function App() {
   return (
     <div>
       <Header />
-
       <TodoTable todoData={todoList} />
     </div>
   );

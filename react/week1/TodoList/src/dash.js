@@ -1,10 +1,8 @@
 import { useState } from "react";
-
 import Table from "react-bootstrap/Table";
 
 export function Header() {
   const todayDate = new Date().toDateString();
-
   return (
     <header>
       <h1 className="App-header">Wellcome to TODO Website</h1>
@@ -24,7 +22,6 @@ export function TableBody(props) {
 }
 
 export default function TodoTable(props) {
-  console.log(props.todoData);
   return (
     <Table striped bordered hover variant="dark">
       <thead>
@@ -35,8 +32,8 @@ export default function TodoTable(props) {
         </tr>
       </thead>
       <tbody>
-        {props.todoData.map((obj, index) => {
-          return <TableBody key={index} obj={obj} />;
+        {props.todoData.map((obj) => {
+          return <TableBody key={obj.id} obj={obj} />;
         })}
       </tbody>
     </Table>
