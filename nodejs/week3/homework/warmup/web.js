@@ -8,78 +8,49 @@ app.use(express.json());
 app.use("/", router);
 
 //Multiplication
-router.get("/multiply", (req, res) => {
-  const first = Object(req.query).firstParam;
-  const second = Object(req.query).secondParam;
-  let firstParam = 0;
-  let secondParam = 0;
-  if (first.length > 1) {
-    firstParam = first
-      .map((item) => parseInt(item))
-      .reduce((acc, value) => {
-        return acc + value;
-      });
-  } else {
-    firstParam = parseInt(first);
-  }
-  if (second.length > 1) {
-    secondParam = second
-      .map((item) => parseInt(item))
-      .reduce((acc, value) => {
-        return acc + value;
-      });
-    secondParam;
-  } else {
-    secondParam = parseInt(second);
-  }
-  if (isNaN(firstParam) || isNaN(secondParam)) {
-    return res
-      .status(400)
-      .send({ Error: "First Param and Second Param must be numbers" });
-  } else {
-    res.send(`Multiplication of request = ${firstParam * secondParam} `);
+router.get("/multiply", async (req, res) => {
+  try {
+    const queryObj = Object.values(req.query);
+    const convertedValues = queryObj.flat().map((item) => parseInt(item));
+    const result = convertedValues.reduce((acc, value) => {
+      return acc * value;
+    }, 1);
+    isNaN(result)
+      ? res.status(404).send(" Params must be numbers")
+      : res.send(`Multiplication of request = ${result} `);
+  } catch (error) {
+    error;
   }
 });
-
 // Addition
-router.get("/add", (req, res) => {
-  const first = Object(req.query).firstParam;
-  const second = Object(req.query).secondParam;
-  let firstParam = 0;
-  let secondParam = 0;
-  if (first.length > 1) {
-    firstParam = first
-      .map((item) => parseInt(item))
-      .reduce((acc, value) => {
-        return acc + value;
-      });
-  } else {
-    firstParam = parseInt(first);
-  }
-  if (second.length > 1) {
-    secondParam = second
-      .map((item) => parseInt(item))
-      .reduce((acc, value) => {
-        return acc + value;
-      });
-    secondParam;
-  } else {
-    secondParam = parseInt(second);
-  }
-  if (isNaN(firstParam) || isNaN(secondParam)) {
-    return res
-      .status(400)
-      .send({ Error: "First Param and Second Param must be numbers" });
-  } else {
-    res.send(`Addition of request = ${firstParam + secondParam} `);
+router.get("/add", async (req, res) => {
+  try {
+    const queryObj = Object.values(req.query);
+    const convertedValues = queryObj.flat().map((item) => parseInt(item));
+    const result = convertedValues.reduce((acc, value) => {
+      return acc + value;
+    }, 0);
+    isNaN(result)
+      ? res.status(404).send(" Params must be numbers")
+      : res.send(`Addition of request = ${result} `);
+  } catch (error) {
+    error;
   }
 });
-
-// i got undefined wit req.body and i do not know where is the problem 
-router.post("/multiply",async (req, res) => {
-  console.log("hi ");
-  console.log(req.body);
-  res.json(`request ${parseInt(req.body)} `);
+// post
+router.post("/multiply", async (req, res) => {
+  try {
+    const queryObj = Object.values(req.query);
+    const convertedValues = queryObj.flat().map((item) => parseInt(item));
+    const result = convertedValues.reduce((acc, value) => {
+      return acc * value;
+    }, 1);
+    isNaN(result)
+      ? res.status(404).send(" Params must be numbers")
+      : res.send(`Multiplication of request = ${result} `);
+  } catch (error) {
+    error;
+  }
 });
 
 module.exports = router;
