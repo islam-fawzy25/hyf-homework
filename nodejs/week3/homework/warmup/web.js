@@ -40,11 +40,11 @@ router.get("/add", async (req, res) => {
 // post
 router.post("/multiply", async (req, res) => {
   try {
-    const queryObj = Object.values(req.query);
+    const queryObj = Object.values(req.body);
     const convertedValues = queryObj.flat().map((item) => parseInt(item));
     const result = convertedValues.reduce((acc, value) => {
       return acc * value;
-    }, 1);
+    },1);
     isNaN(result)
       ? res.status(404).send(" Params must be numbers")
       : res.send(`Multiplication of request = ${result} `);
