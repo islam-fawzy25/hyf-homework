@@ -31,7 +31,7 @@ const Timer = () => {
 };
 // component to check the todos array when it is empty render a message
 const CheckTodoArray = (props) => {
-  if (props.array.length === 0) {
+  if (props.todosArray.length === 0) {
     return <div> No Items </div>;
   } else {
     return null;
@@ -39,20 +39,20 @@ const CheckTodoArray = (props) => {
 };
 // the main component for add and delete todo item
 const ListedTodos = () => {
-  const [array, setArray] = useState(todos);
-  const [status, setStatus] = useState(false);
+  const [todosArray, setTodosArray] = useState(todos);
 
   //add todo function to execute modifying on todos array by useState
   const addTodo = () => {
-    setArray((prev) => {
+    setTodosArray((prev) => {
       return [...prev, { id: Date.now(), description: "Random text" }];
     });
   };
+
   // delete function execute filter todos array
   const deleteTodo = (props) => {
-    setArray((items) => {
-      return items.filter((item) => {
-        return item.id !== props.id;
+    setTodosArray((todos) => {
+      return todos.filter((todo) => {
+        return todo.id !== props.todosItems.id;
       });
     });
   };
@@ -61,46 +61,54 @@ const ListedTodos = () => {
     return (
       <div>
         <button onClick={addTodo}>Add Todo</button>
-        <CheckTodoArray array={array} />
+        <CheckTodoArray todosArray={todosArray} />
       </div>
     );
   };
-
-  // checkbox function to check if it is checked it will change status and make through line
-  // i did my best here and still need help it is not working 100% i know and i am sure i have to useEffect here but i can not do more 
-  
-  const changeTodoStatus = () => {
-setStatus(!status)
+// Render todos tasks it will render all tasks in todos array and check todos status  if it's done or not 
+  const RenderTodosTasks = (props) => {
+    const [status, setStatus] = useState(false);
+ // checkbox function to check if it is checked it will change status and make through line
+    const changeTodoStatus = () => {
+      return setStatus(!status);
+    };
+    return (
+      <div>
+        <li>
+          <label
+            htmlFor="todoItem"
+            style={{ textDecoration: status ? "line-through" : "none" }}
+          >
+            {props.todosItems.description}
+            <input
+              type="checkbox"
+              id="todoItem"
+              onChange={changeTodoStatus}
+              key={props.id}
+            />
+            <button
+              onClick={() => {
+                deleteTodo(props);
+              }}
+            >
+              Delete
+            </button>
+          </label>
+        </li>
+      </div>
+    );
   };
 
   return (
     <div>
       <AddTodoButton />
-      <ul>
-        {array.map((obj) => (
-          <div key={obj.id}>
-            <li>
-              <label htmlFor="todoItem" style={{ 'textDecoration': status ? 'line-through':'none'   }}>
-                {obj.description}
-                <input
-                  type="checkbox"
-                  id="todoItem"
-                  onChange={()=>{
-                    changeTodoStatus()
-                  }}
-                />
-              </label>
-              <button
-                onClick={() => {
-                  deleteTodo(obj);
-                }}
-              >
-                Delete
-              </button>
-            </li>
+      {todosArray.map((todo) => {
+        return (
+          <div key={todo.id}>
+            <RenderTodosTasks todosItems={todo} />
           </div>
-        ))}
-      </ul>
+        );
+      })}
     </div>
   );
 };
