@@ -65,12 +65,21 @@ const ListedTodos = () => {
       </div>
     );
   };
-// Render todos tasks it will render all tasks in todos array and check todos status  if it's done or not 
+  // Render todos tasks it will render all tasks in todos array and check todos status  if it's done or not
   const RenderTodosTasks = (props) => {
     const [status, setStatus] = useState(false);
- // checkbox function to check if it is checked it will change status and make through line
-    const changeTodoStatus = () => {
-      return setStatus(!status);
+    const [todosArray, setTodosArray] = useState(todos);
+    // checkbox function to check if it is checked it will change status 
+    //and make through line and change done state of checked todo
+    const changeTodoStatus = (props) => {
+      setStatus(!status);
+      setTodosArray((todos) => {
+        todos.map((todo) => {
+          if (todo.id === props.todosItems.id) {
+            return todo.done=! status;
+          }
+        });
+      });
     };
     return (
       <div>
@@ -83,7 +92,9 @@ const ListedTodos = () => {
             <input
               type="checkbox"
               id="todoItem"
-              onChange={changeTodoStatus}
+              onChange={() => {
+                changeTodoStatus(props);
+              }}
               key={props.id}
             />
             <button
