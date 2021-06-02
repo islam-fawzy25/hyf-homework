@@ -40,11 +40,12 @@ const CheckTodoArray = (props) => {
 // the main component for add and delete todo item
 const ListedTodos = () => {
   const [todosArray, setTodosArray] = useState(todos);
-
+  console.log(todosArray);
   //add todo function to execute modifying on todos array by useState
   const addTodo = () => {
+    
     setTodosArray((prev) => {
-      return [...prev, { id: Date.now(), description: "Random text" }];
+      return [...prev, { id: Date.now(), description: "Random text" , done : false}];
     });
   };
 
