@@ -57,14 +57,13 @@ const RenderTodos = ({ todos, setTodos }) => {
 // TodoDescription component will execute new todo task by input tag and render AddTodo
 const TodoDescription = ({ todos, setTodos, inputValue, setInputValue }) => {
   const inputFunction = (e) => {
-   
-    setInputValue(todoValue =>{
+    setInputValue((todoValue) => {
       if (e.target.value == "") {
         return alert("write something here ");
-      } else { return  e.target.value
-       
+      } else {
+        return e.target.value;
       }
-    })
+    });
   };
   return (
     <div>
@@ -91,11 +90,15 @@ TodoDescription.propTypes = {
 };
 // Deadline component will execute DatePicker component and give date to new todo task
 const Deadline = ({ deadline, setDeadline }) => {
-  setDeadline(deadline);
+   setDeadline(deadline);
   return (
     <span>
       Deadline
-      <DatePicker onChange={setDeadline} value={deadline} />
+      <DatePicker
+        onChange={()=>{setDeadline(deadline)}}
+        value={deadline}
+        minDate={new Date()}
+      />
     </span>
   );
 };
@@ -111,17 +114,21 @@ const NoItems = ({ todos }) => {
 const AddTodo = ({ todos, setTodos, inputValue }) => {
   const [deadline, setDeadline] = useState(new Date());
   const addtodo = () => {
-    setTodos((prev) => {
-      return [
-        ...prev,
-        {
-          id: Date.now(),
-          description: inputValue,
-          deadline: deadline.toUTCString(),
-          isDone: false,
-        },
-      ];
-    });
+    if (inputValue === "") {
+      return alert("Write your Todo first ");
+    } else {
+      return setTodos((prev) => {
+        return [
+          ...prev,
+          {
+            id: Date.now(),
+            description: inputValue,
+            deadline: deadline.toUTCString(),
+            isDone: false,
+          },
+        ];
+      });
+    }
   };
   return (
     <div>
@@ -137,6 +144,15 @@ const AddTodo = ({ todos, setTodos, inputValue }) => {
   );
 };
 
+const Border = ({ Children }) => {
+  return (
+    <span
+      style={{ border: "2px somaind red", width: "450px", height: "500px" }}
+    >
+      {Children}
+    </span>
+  );
+};
 const ListedToodos = ({ todos, todo, setTodos, inputValue, setInputValue }) => {
   const [status, setStatus] = useState(false);
   const [onEdit, setOnEdit] = useState(true);
@@ -147,7 +163,6 @@ const ListedToodos = ({ todos, todo, setTodos, inputValue, setInputValue }) => {
 
   const changeTodoStatus = () => {
     setStatus(!status);
-
     return todos.map((todoTask) => {
       if (todoTask.id === todo.id) {
         return (todoTask.isDone = !status);
@@ -158,44 +173,36 @@ const ListedToodos = ({ todos, todo, setTodos, inputValue, setInputValue }) => {
   };
 
   return (
-  
-      <span >
-      
+    <span>
+      <li
+        className="todoList"
+        style={{ textDecoration: status ? "line-through" : "none" }}
+      >
+        <span>
+          <span style={{ visibility: onEdit ? "visible" : "hidden" }}>
+            {todo.description}|{todo.deadline}
+          </span>
+          {!onEdit && <input value={inputValue} onChange={inputFunction} />}
+          <input
+            type="checkbox"
+            onChange={() => {
+              changeTodoStatus();
+            }}
+          />
+        </span>
 
-     
-        <li className='todoList'
-       
-       style={{ textDecoration: status ? "line-through" : "none" }}
-     >
-       <span>
-         <span style={{ visibility: onEdit ? "visible" : "hidden" }}>
-           {todo.description}|{todo.deadline}
-         </span>
-         {!onEdit && <input value={inputValue} onChange={inputFunction} />}
-         <input
-           type="checkbox"
-           onChange={() => {
-             changeTodoStatus();
-           }}
-         />
-       </span>
-
-       <Delete todo={todo} todos={todos} setTodos={setTodos}></Delete>
-       <Edit
-         todo={todo}
-         todos={todos}
-         setTodos={setTodos}
-         inputValue={inputValue}
-         setInputValue={setInputValue}
-         onEdit={onEdit}
-         setOnEdit={setOnEdit}
-       ></Edit>
-     </li>
-       
-     
-      </span>
-     
-   
+        <Delete todo={todo} todos={todos} setTodos={setTodos}></Delete>
+        <Edit
+          todo={todo}
+          todos={todos}
+          setTodos={setTodos}
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+          onEdit={onEdit}
+          setOnEdit={setOnEdit}
+        ></Edit>
+      </li>
+    </span>
   );
 };
 
@@ -221,13 +228,11 @@ const Edit = ({
   };
 
   return (
-    <div>
-      <span>
-        <button onClick={editTodo} value={todo.description}>
-          {onEdit ? "Edit" : "Update"}
-        </button>
-      </span>
-    </div>
+    <span>
+      <button onClick={editTodo} value={todo.description}>
+        {onEdit ? "Edit" : "Update"}
+      </button>
+    </span>
   );
 };
 
