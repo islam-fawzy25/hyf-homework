@@ -1,8 +1,9 @@
 import "./App.css";
 import PropTypes from "prop-types";
-import React, { useState, useEffect, Children } from "react";
+import React, { useState, useEffect } from "react";
 import DatePicker from "react-date-picker";
 import TodoApp from "./todoList";
+import Border from "./border";
 // Fetchinh todos array and transfer todos value to RenderTodos Component
 const FetchingTodos = () => {
   const [todosArray, setTodosArray] = useState([]);
@@ -38,6 +39,7 @@ const RenderTodos = ({ todos, setTodos }) => {
         inputValue={inputValue}
         setInputValue={setInputValue}
       ></TodoDescription>
+
       {todos.map((todo) => {
         return (
           <div key={todo.id}>
@@ -58,7 +60,7 @@ const RenderTodos = ({ todos, setTodos }) => {
 const TodoDescription = ({ todos, setTodos, inputValue, setInputValue }) => {
   const inputFunction = (e) => {
     setInputValue((todoValue) => {
-      if (e.target.value == "") {
+      if (e.target.value === "") {
         return alert("write something here ");
       } else {
         return e.target.value;
@@ -84,18 +86,23 @@ const TodoDescription = ({ todos, setTodos, inputValue, setInputValue }) => {
     </div>
   );
 };
+
 TodoDescription.propTypes = {
   todos: PropTypes.array,
   inputValue: PropTypes.string,
+  setInputValue : PropTypes.func,
+  setTodos : PropTypes.func
 };
 // Deadline component will execute DatePicker component and give date to new todo task
 const Deadline = ({ deadline, setDeadline }) => {
-   setDeadline(deadline);
+  setDeadline(deadline);
   return (
     <span>
       Deadline
       <DatePicker
-        onChange={()=>{setDeadline(deadline)}}
+        onChange={() => {
+          setDeadline(deadline);
+        }}
         value={deadline}
         minDate={new Date()}
       />
@@ -144,15 +151,6 @@ const AddTodo = ({ todos, setTodos, inputValue }) => {
   );
 };
 
-const Border = ({ Children }) => {
-  return (
-    <span
-      style={{ border: "2px somaind red", width: "450px", height: "500px" }}
-    >
-      {Children}
-    </span>
-  );
-};
 const ListedToodos = ({ todos, todo, setTodos, inputValue, setInputValue }) => {
   const [status, setStatus] = useState(false);
   const [onEdit, setOnEdit] = useState(true);
@@ -174,34 +172,41 @@ const ListedToodos = ({ todos, todo, setTodos, inputValue, setInputValue }) => {
 
   return (
     <span>
-      <li
-        className="todoList"
-        style={{ textDecoration: status ? "line-through" : "none" }}
+      <Border
+        todo={todo}
+        todos={todos}
+        setTodos={setTodos}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        onEdit={onEdit}
+        setOnEdit={setOnEdit}
       >
-        <span>
-          <span style={{ visibility: onEdit ? "visible" : "hidden" }}>
-            {todo.description}|{todo.deadline}
+        <li style={{ textDecoration: status ? "line-through" : "none" }}>
+          <span>
+            <span style={{ visibility: onEdit ? "visible" : "hidden" }}>
+              {todo.description}|{todo.deadline}
+            </span>
+            {!onEdit && <input value={inputValue} onChange={inputFunction} />}
+            <input
+              type="checkbox"
+              onChange={() => {
+                changeTodoStatus();
+              }}
+            />
           </span>
-          {!onEdit && <input value={inputValue} onChange={inputFunction} />}
-          <input
-            type="checkbox"
-            onChange={() => {
-              changeTodoStatus();
-            }}
-          />
-        </span>
 
-        <Delete todo={todo} todos={todos} setTodos={setTodos}></Delete>
-        <Edit
-          todo={todo}
-          todos={todos}
-          setTodos={setTodos}
-          inputValue={inputValue}
-          setInputValue={setInputValue}
-          onEdit={onEdit}
-          setOnEdit={setOnEdit}
-        ></Edit>
-      </li>
+          <Delete todo={todo} todos={todos} setTodos={setTodos}></Delete>
+          <Edit
+            todo={todo}
+            todos={todos}
+            setTodos={setTodos}
+            inputValue={inputValue}
+            setInputValue={setInputValue}
+            onEdit={onEdit}
+            setOnEdit={setOnEdit}
+          ></Edit>
+        </li>
+      </Border>
     </span>
   );
 };
