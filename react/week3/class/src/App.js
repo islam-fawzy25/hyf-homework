@@ -14,7 +14,7 @@ const FetchingTodos = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        setTodosArray((prev) => data);
+        setTodosArray(data);
         setIsLoading(!isLoading);
       });
   };
@@ -58,15 +58,6 @@ const RenderTodos = ({ todos, setTodos }) => {
 };
 // TodoDescription component will execute new todo task by input tag and render AddTodo
 const TodoDescription = ({ todos, setTodos, inputValue, setInputValue }) => {
-  const inputFunction = (e) => {
-    setInputValue((todoValue) => {
-      if (e.target.value === "") {
-        return alert("write something here ");
-      } else {
-        return e.target.value;
-      }
-    });
-  };
   return (
     <div>
       Todo description
@@ -74,7 +65,7 @@ const TodoDescription = ({ todos, setTodos, inputValue, setInputValue }) => {
         type="text"
         placeholder="description"
         value={inputValue}
-        onChange={inputFunction}
+        onChange={(e) => setInputValue(e.target.value)}
       ></input>
       <br />
       <AddTodo
@@ -90,8 +81,8 @@ const TodoDescription = ({ todos, setTodos, inputValue, setInputValue }) => {
 TodoDescription.propTypes = {
   todos: PropTypes.array,
   inputValue: PropTypes.string,
-  setInputValue : PropTypes.func,
-  setTodos : PropTypes.func
+  setInputValue: PropTypes.func,
+  setTodos: PropTypes.func,
 };
 // Deadline component will execute DatePicker component and give date to new todo task
 const Deadline = ({ deadline, setDeadline }) => {
@@ -111,7 +102,7 @@ const Deadline = ({ deadline, setDeadline }) => {
 };
 //NoItems component will check todos arrays and render No items message when it being empty
 const NoItems = ({ todos }) => {
-  if (todos.length === 0) {
+  if (!todos.length) {
     return <div> No items </div>;
   } else {
     return null;
@@ -120,11 +111,11 @@ const NoItems = ({ todos }) => {
 //AddTodo component will invoke Deadline, NoItems components and create new todo task
 const AddTodo = ({ todos, setTodos, inputValue }) => {
   const [deadline, setDeadline] = useState(new Date());
-  const addtodo = () => {
+  const addTodo = () => {
     if (inputValue === "") {
-      return alert("Write your Todo first ");
+      alert("Write your Todo first ");
     } else {
-      return setTodos((prev) => {
+      setTodos((prev) => {
         return [
           ...prev,
           {
@@ -145,7 +136,7 @@ const AddTodo = ({ todos, setTodos, inputValue }) => {
         setDeadline={setDeadline}
         deadline={deadline}
       ></Deadline>
-      <button onClick={addtodo}> Add Todo</button>
+      <button onClick={addTodo}> Add Todo</button>
       <NoItems todos={todos}></NoItems>
     </div>
   );
@@ -154,10 +145,6 @@ const AddTodo = ({ todos, setTodos, inputValue }) => {
 const ListedToodos = ({ todos, todo, setTodos, inputValue, setInputValue }) => {
   const [status, setStatus] = useState(false);
   const [onEdit, setOnEdit] = useState(true);
-
-  const inputFunction = (e) => {
-    setInputValue(e.target.value);
-  };
 
   const changeTodoStatus = () => {
     setStatus(!status);
@@ -186,7 +173,14 @@ const ListedToodos = ({ todos, todo, setTodos, inputValue, setInputValue }) => {
             <span style={{ visibility: onEdit ? "visible" : "hidden" }}>
               {todo.description}|{todo.deadline}
             </span>
-            {!onEdit && <input value={inputValue} onChange={inputFunction} />}
+            {!onEdit && (
+              <input
+                value={inputValue}
+                onChange={(e) => {
+                  setInputValue(e.target.value);
+                }}
+              />
+            )}
             <input
               type="checkbox"
               onChange={() => {
@@ -214,6 +208,7 @@ const ListedToodos = ({ todos, todo, setTodos, inputValue, setInputValue }) => {
 const Edit = ({
   todo,
   todos,
+  setTodos,
   inputValue,
   setInputValue,
   setOnEdit,
@@ -223,15 +218,16 @@ const Edit = ({
     setInputValue(e.target.value);
     setOnEdit(!onEdit);
 
-    return todos.map((todoTask) => {
+    const newTodos = todos.map((todoTask) => {
       if (todoTask.id === todo.id) {
-        return (todoTask.description = inputValue);
+        return { ...todoTask, description: inputValue };
       } else {
-        return null;
+        return todoTask;
       }
     });
-  };
 
+    setTodos(newTodos);
+  };
   return (
     <span>
       <button onClick={editTodo} value={todo.description}>
