@@ -3,15 +3,16 @@ import { ApiData } from "./fetch";
 import Display from "./display";
 
 const Input = () => {
-  const { fetchFunc, loading } = useContext(ApiData);
+  const {  loading , users,setUsers } = useContext(ApiData);
 
   return (
     <div>
       <h1>GitHub user searcher</h1>
       <input
         type="text"
+        value={users}
         onChange={(e) => {
-          fetchFunc(e.target.value);
+         setUsers(e.target.value);
         }}
       />
       {loading && <div>... Loading</div>}
