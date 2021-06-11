@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ApiData } from "./fetch";
 
 const Display = () => {
-  const { data , users ,setUsers} = useContext(ApiData);
+  const { data } = useContext(ApiData);
 
   return (
     <ul>

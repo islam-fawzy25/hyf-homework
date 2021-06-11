@@ -13,7 +13,6 @@ const Fetch = () => {
     try {
       await fetch(`https://api.github.com/search/users?q=${input}`)
         .then((response) => {
-          console.log(response.statusText);
           if (!response.ok ) {
 
             throw Error(" Could not  fetch the data ");
