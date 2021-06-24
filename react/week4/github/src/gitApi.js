@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useContext } from "react";
+import React, { useState, useEffect } from "react";
 
 export const ApiData = React.createContext();
 const GitHubApi = ()=>{
@@ -37,6 +37,7 @@ const GitHubApi = ()=>{
    
 //     </div>
 //   );
+
 
 // }
 const fetchFunc = async () => {

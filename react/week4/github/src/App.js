@@ -1,13 +1,11 @@
 import "./App.css";
 import React from "react";
-import Fetch from "./fetch";
-import GitHubApi from "./gitApi";
+import Fetch from "./Fetch";
 
 function App() {
   return (
     <div className="App">
-      <Fetch></Fetch>
-      <GitHubApi></GitHubApi>
+      <Fetch />
     </div>
   );
 }

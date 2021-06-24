@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
-import { ApiData } from "./fetch";
+import { ApiData } from "./Fetch";
 
-const Display = () => {
+const UserList = () => {
   const { data } = useContext(ApiData);
 
   return (
     <ul>
       {!data.length ? (
-        <h3>No result</h3>
+        <li>No result</li>
       ) : (
         data.map((users) => {
           return <li key={users.id}>{users.login}</li>;
@@ -17,4 +17,4 @@ const Display = () => {
   );
 };
 
-export default Display;
+export default UserList;
